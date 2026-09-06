@@ -1,0 +1,26 @@
+{
+  "name": "Invest.AI — Inteligência para investir melhor",
+  "short_name": "Invest.AI",
+  "description": "Plataforma de investimentos com IA para analisar perfil, carteira e objetivos financeiros.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F7FAFC",
+  "theme_color": "#0B1F35",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
