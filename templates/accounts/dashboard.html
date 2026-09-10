@@ -1,0 +1,224 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Painel | Invest.AI
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-welcome">
+
+    <div>
+        <span class="dashboard-eyebrow">
+            VISÃO GERAL
+        </span>
+
+        <h1>
+            Olá, {{ request.user.username }}.
+        </h1>
+
+        <p>
+            Acompanhe seu perfil, seus investimentos e os próximos passos da sua jornada financeira.
+        </p>
+    </div>
+
+</section>
+
+
+<section class="dashboard-cards">
+
+    <article class="dashboard-card">
+
+        <span class="dashboard-card-label">
+            PERFIL VIVO
+        </span>
+
+        <h2>
+            Não avaliado
+        </h2>
+
+        <p>
+            Descubra seu perfil atual de investidor.
+        </p>
+
+       href="{% url 'perfil:avaliacao' %}"
+            Iniciar avaliação →
+        </a>
+
+    </article>
+
+
+    <article class="dashboard-card">
+
+        <span class="dashboard-card-label">
+            PATRIMÔNIO CADASTRADO
+        </span>
+
+        <h2>
+            R$ 0,00
+        </h2>
+
+        <p>
+            Nenhum investimento cadastrado ainda.
+        </p>
+
+        <a href="#" class="dashboard-link">
+            Adicionar investimentos →
+        </a>
+
+    </article>
+
+
+    <article class="dashboard-card">
+
+        <span class="dashboard-card-label">
+            ALERTAS
+        </span>
+
+        <h2>
+            0
+        </h2>
+
+        <p>
+            Nenhum alerta identificado no momento.
+        </p>
+
+        <span class="dashboard-status">
+            Tudo certo
+        </span>
+
+    </article>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <div class="dashboard-section-header">
+        <div>
+            <span class="dashboard-eyebrow">
+                SUA JORNADA
+            </span>
+
+            <h2>
+                Comece por aqui
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="journey-grid">
+
+        <article class="journey-card">
+
+            <span class="journey-number">
+                01
+            </span>
+
+            <h3>
+                Descubra seu Perfil Vivo
+            </h3>
+
+            <p>
+                Responda à avaliação inicial para entendermos seu momento, objetivos e tolerância a risco.
+            </p>
+
+            <a href="#" class="app-button">
+                Iniciar avaliação
+            </a>
+
+        </article>
+
+
+        <article class="journey-card">
+
+            <span class="journey-number">
+                02
+            </span>
+
+            <h3>
+                Cadastre sua carteira
+            </h3>
+
+            <p>
+                Informe voluntariamente os investimentos que deseja acompanhar no Invest.AI.
+            </p>
+
+            <a href="#" class="app-button app-button-secondary">
+                Adicionar investimentos
+            </a>
+
+        </article>
+
+
+        <article class="journey-card">
+
+            <span class="journey-number">
+                03
+            </span>
+
+            <h3>
+                Receba seu Raio-X
+            </h3>
+
+            <p>
+                Depois de cadastrar seus ativos, você verá concentração, distribuição e pontos de atenção.
+            </p>
+
+            <span class="journey-disabled">
+                Disponível após cadastrar a carteira
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-bottom-grid">
+
+    <article class="dashboard-panel">
+
+        <span class="dashboard-eyebrow">
+            RADAR DO MERCADO
+        </span>
+
+        <h2>
+            Informação com contexto
+        </h2>
+
+        <p>
+            Notícias e análises que poderão ajudar você a compreender eventos relevantes para seus investimentos.
+        </p>
+
+        <a href="#" class="dashboard-link">
+            Explorar Radar →
+        </a>
+
+    </article>
+
+
+    <article class="dashboard-panel dashboard-agent">
+
+        <span class="dashboard-eyebrow">
+            AGENTE INVEST.AI
+        </span>
+
+        <h2>
+            Converse sobre sua carteira
+        </h2>
+
+        <p>
+            O agente explicará seu perfil, carteira, riscos e simulações usando apenas os dados necessários para cada análise.
+        </p>
+
+        <a href="#" class="app-button">
+            Conversar com a IA
+        </a>
+
+    </article>
+
+</section>
+
+{% endblock %}

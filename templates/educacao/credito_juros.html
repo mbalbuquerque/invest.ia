@@ -1,0 +1,407 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Crédito e juros | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 04
+        </span>
+
+        <h1>Crédito e juros</h1>
+
+        <p>
+            Crédito pode ser útil, mas não é dinheiro extra.
+            Quando utilizamos crédito, assumimos um compromisso
+            com nossa renda futura.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+        <!-- 01 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Crédito não aumenta sua renda
+            </h2>
+
+            <p>
+                Cartão de crédito, financiamento e empréstimo
+                permitem utilizar hoje um dinheiro que será
+                pago posteriormente.
+            </p>
+
+            <div class="lesson-highlight">
+                Crédito é dinheiro emprestado.
+                Não deve ser confundido com renda.
+            </div>
+
+            <p>
+                Ao utilizar crédito, parte da renda dos próximos
+                meses poderá ficar comprometida com o pagamento.
+            </p>
+
+        </article>
+
+
+        <!-- 02 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Entenda os juros
+            </h2>
+
+            <p>
+                Juros representam, de forma simplificada,
+                o custo de utilizar dinheiro por determinado período.
+            </p>
+
+            <p>
+                Imagine um empréstimo de
+                <strong>R$ 1.000</strong>.
+            </p>
+
+            <p>
+                Se ao final você precisar devolver
+                <strong>R$ 1.200</strong>, os R$ 200 adicionais
+                fazem parte do custo dessa operação.
+            </p>
+
+            <div class="lesson-highlight">
+                Compare sempre quanto recebeu ou comprou
+                com quanto efetivamente pagará ao final.
+            </div>
+
+        </article>
+
+
+        <!-- 03 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                “Cabe na parcela” não é suficiente
+            </h2>
+
+            <p>
+                Uma compra de R$ 1.200 pode parecer pequena
+                quando apresentada como:
+            </p>
+
+            <div class="lesson-highlight">
+                12 parcelas de R$ 100
+            </div>
+
+            <p>
+                Mesmo quando não há juros, existem
+                R$ 100 da sua renda comprometidos durante
+                os próximos 12 meses.
+            </p>
+
+            <p>
+                Quando várias compras parceladas são acumuladas,
+                pequenas parcelas podem formar uma grande
+                despesa mensal.
+            </p>
+
+        </article>
+
+
+        <!-- 04 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                04
+            </span>
+
+            <h2>
+                Cuidado com o pagamento parcial da fatura
+            </h2>
+
+            <p>
+                Quando a fatura do cartão não é integralmente
+                paga, o saldo restante pode gerar encargos
+                conforme as condições do contrato.
+            </p>
+
+            <p>
+                Por isso, antes de utilizar o cartão,
+                é importante considerar se haverá recursos
+                para pagar a fatura.
+            </p>
+
+            <div class="lesson-highlight">
+                O limite do cartão não representa
+                dinheiro disponível na sua conta.
+            </div>
+
+        </article>
+
+
+        <!-- 05 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                05
+            </span>
+
+            <h2>
+                Compare o custo total
+            </h2>
+
+            <p>
+                Ao avaliar crédito, não observe apenas
+                o valor da prestação.
+            </p>
+
+            <p>
+                Compare também:
+            </p>
+
+            <ul>
+                <li>Valor recebido ou financiado;</li>
+                <li>Número de parcelas;</li>
+                <li>Valor de cada parcela;</li>
+                <li>Valor total a pagar;</li>
+                <li>Taxas e outros custos da operação.</li>
+            </ul>
+
+        </article>
+
+
+        <!-- SITUAÇÃO -->
+
+        <article class="lesson-card lesson-question">
+
+            <span class="dashboard-eyebrow">
+                SITUAÇÃO PRÁTICA
+            </span>
+
+            <h2>
+                Qual opção realmente custa menos?
+            </h2>
+
+            <p>
+                Imagine um produto vendido de duas formas:
+            </p>
+
+            <div class="lesson-example">
+
+                <div>
+                    <span>Opção A</span>
+                    <strong>
+                        R$ 1.000 à vista
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Opção B</span>
+                    <strong>
+                        12 × R$ 100
+                    </strong>
+                </div>
+
+            </div>
+
+            <p>
+                Na opção B, o valor total será:
+            </p>
+
+            <div class="lesson-highlight">
+                12 × R$ 100 = R$ 1.200
+            </div>
+
+            <p>
+                Portanto, nesse exemplo simplificado,
+                existe uma diferença de R$ 200 entre
+                os valores totais.
+            </p>
+
+        </article>
+
+
+        <!-- QUIZ -->
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE RÁPIDO
+            </span>
+
+            <h2>
+                Ao contratar crédito ou fazer uma compra
+                parcelada, qual atitude é mais adequada?
+            </h2>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Escolher sempre a opção com
+                    a menor parcela.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    Utilizar todo o limite de crédito
+                    disponível.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Comparar o valor total, os custos
+                    e o impacto das parcelas no orçamento.
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Verificar resposta
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Resposta correta!
+                </strong>
+
+                <p>
+                    A parcela é apenas uma parte da análise.
+                    Também precisamos considerar o custo total
+                    e o impacto daquele compromisso no orçamento.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Não observe somente a parcela ou
+                    o limite disponível. Pense no custo total
+                    e na sua capacidade de pagamento.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- PRÓXIMA ETAPA -->
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    PRÓXIMA ETAPA
+                </span>
+
+                <h3>
+                    Dívidas
+                </h3>
+
+                <p>
+                    Na próxima etapa vamos aprender
+                    a identificar sinais de endividamento
+                    e organizar prioridades quando existem dívidas.
+                </p>
+
+            </div>
+
+
+            {% if progresso %}
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Aula concluída ✓
+            </a>
+
+            {% else %}
+
+            <span class="learning-locked">
+                🔒 Responda corretamente ao quiz
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,324 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Aprender | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="learning-page">
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <div class="learning-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA
+        </span>
+
+        <h1>
+            Aprender. Organizar. Investir.
+        </h1>
+
+        <p>
+            Construa conhecimento financeiro passo a passo
+            e avance de acordo com sua jornada.
+        </p>
+
+    </div>
+
+
+    <!-- =========================================
+         RESUMO DO PROGRESSO
+    ========================================== -->
+
+    <div class="learning-summary">
+
+        <div class="learning-summary-item">
+
+            <span>
+                Seu progresso
+            </span>
+
+            <strong>
+                {{ percentual }}%
+            </strong>
+
+        </div>
+
+
+        <div class="learning-summary-item">
+
+            <span>
+                Etapa atual
+            </span>
+
+            <strong>
+                Fundamentos
+            </strong>
+
+        </div>
+
+
+        <div class="learning-summary-item">
+
+            <span>
+                Aulas concluídas
+            </span>
+
+            <strong>
+                {{ total_concluidas }} de {{ total_aulas }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BARRA DE PROGRESSO
+    ========================================== -->
+
+    <div class="learning-progress">
+
+        <div class="learning-progress-info">
+
+            <span>
+                Progresso da trilha
+            </span>
+
+            <span>
+                {{ percentual }}%
+            </span>
+
+        </div>
+
+        <div class="learning-progress-bar">
+
+            <div
+                class="learning-progress-fill"
+                style="width: {{ percentual }}%;">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TÍTULO DA TRILHA
+    ========================================== -->
+
+    <div class="learning-section-title">
+
+        <span class="dashboard-eyebrow">
+            MINHA TRILHA
+        </span>
+
+        <h2>
+            Comece pelos fundamentos
+        </h2>
+
+        <p>
+            Cada etapa prepara você para tomar decisões
+            financeiras mais conscientes.
+        </p>
+
+    </div>
+
+
+    <!-- =========================================
+         AULAS
+    ========================================== -->
+
+    <div class="learning-grid">
+
+        {% for trilha in trilhas %}
+
+        <article
+            class="
+                learning-card
+                {% if trilha.concluida %}
+                    learning-card-completed
+                {% endif %}
+            "
+        >
+
+            <!-- NÚMERO -->
+
+            <div class="learning-number">
+
+                {% if trilha.concluida %}
+
+                    ✓
+
+                {% else %}
+
+                    {{ trilha.numero|stringformat:"02d" }}
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- CONTEÚDO -->
+
+            <div class="learning-card-content">
+
+                <div class="learning-card-header">
+
+                    <h3>
+                        {{ trilha.titulo }}
+                    </h3>
+
+
+                    {% if trilha.concluida %}
+
+                        <span class="learning-completed">
+                            ✓ Aula concluída
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <p>
+                    {{ trilha.descricao }}
+                </p>
+
+
+                <!-- =================================
+                     AULA DISPONÍVEL
+                ================================== -->
+
+                {% if trilha.status == "disponivel" %}
+
+
+                    {% if trilha.url %}
+
+                        <a
+                            href="{% url trilha.url %}"
+                            class="app-button"
+                        >
+
+                            {% if trilha.concluida %}
+
+                                Revisar aula
+
+                            {% else %}
+
+                                Começar
+
+                            {% endif %}
+
+                        </a>
+
+                    {% else %}
+
+                        <span class="learning-coming-soon">
+                            Aula em preparação
+                        </span>
+
+                    {% endif %}
+
+
+                <!-- =================================
+                     AULA BLOQUEADA
+                ================================== -->
+
+                {% else %}
+
+                    <span class="learning-locked">
+
+                        🔒 Complete a etapa anterior
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <div class="learning-empty">
+
+            <h3>
+                Nenhuma aula disponível.
+            </h3>
+
+            <p>
+                Novos conteúdos serão adicionados
+                à sua jornada financeira.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- =========================================
+         MENSAGEM EDUCACIONAL
+    ========================================== -->
+
+    <div class="learning-message">
+
+        <div class="learning-message-icon">
+            ✦
+        </div>
+
+        <div>
+
+            <span class="dashboard-eyebrow">
+                INVEST.AI EDUCA
+            </span>
+
+            <h3>
+                Investir é uma etapa da jornada.
+            </h3>
+
+            <p>
+                Antes de escolher produtos financeiros,
+                vamos ajudar você a entender orçamento,
+                crédito, dívidas, reserva e objetivos.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         PRINCÍPIO DA PLATAFORMA
+    ========================================== -->
+
+    <div class="learning-principle">
+
+        <span>
+            APRENDER
+        </span>
+
+        <strong>→</strong>
+
+        <span>
+            ORGANIZAR
+        </span>
+
+        <strong>→</strong>
+
+        <span>
+            INVESTIR
+        </span>
+
+    </div>
+
+</section>
+
+{% endblock %}

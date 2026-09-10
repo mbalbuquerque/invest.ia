@@ -1,0 +1,311 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Reserva de emergência | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 06
+        </span>
+
+        <h1>
+            Reserva de emergência
+        </h1>
+
+        <p>
+            A reserva de emergência existe para ajudar
+            a lidar com imprevistos sem depender imediatamente
+            de crédito ou novas dívidas.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Para que serve uma reserva?
+            </h2>
+
+            <p>
+                Problemas de saúde, perda de renda,
+                reparos inesperados ou outras emergências
+                podem acontecer sem aviso.
+            </p>
+
+            <div class="lesson-highlight">
+                A reserva funciona como uma proteção
+                para situações inesperadas.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Reserva não é dinheiro para qualquer compra
+            </h2>
+
+            <p>
+                A reserva deve ter um objetivo claro:
+                lidar com situações realmente importantes
+                e não previstas.
+            </p>
+
+            <p>
+                Compras por impulso, viagens ou desejos
+                devem fazer parte de outros objetivos financeiros.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                Comece com o que for possível
+            </h2>
+
+            <p>
+                Não é necessário construir uma grande reserva
+                imediatamente.
+            </p>
+
+            <p>
+                O mais importante é criar o hábito
+                de separar uma parte dos recursos disponíveis.
+            </p>
+
+            <div class="lesson-highlight">
+                Pequenos valores acumulados com regularidade
+                podem construir proteção ao longo do tempo.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                04
+            </span>
+
+            <h2>
+                Liquidez importa
+            </h2>
+
+            <p>
+                Em uma emergência, pode ser necessário
+                acessar o dinheiro rapidamente.
+            </p>
+
+            <p>
+                Por isso, além de segurança,
+                é importante considerar a facilidade
+                de resgate dos recursos.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card lesson-question">
+
+            <span class="dashboard-eyebrow">
+                SITUAÇÃO PRÁTICA
+            </span>
+
+            <h2>
+                Imagine que um imprevisto aconteça amanhã.
+            </h2>
+
+            <p>
+                Você precisaria pagar R$ 1.000
+                para resolver uma situação urgente.
+            </p>
+
+            <p>
+                Se não houver nenhuma reserva,
+                talvez seja necessário recorrer
+                ao cartão, cheque especial ou empréstimo.
+            </p>
+
+            <div class="lesson-highlight">
+                A reserva ajuda a reduzir essa dependência.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE RÁPIDO
+            </span>
+
+            <h2>
+                Qual é a principal função de uma
+                reserva de emergência?
+            </h2>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Financiar qualquer compra desejada.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    Criar proteção financeira
+                    para situações inesperadas.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Buscar sempre a maior rentabilidade possível.
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Verificar resposta
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Resposta correta!
+                </strong>
+
+                <p>
+                    A reserva existe principalmente
+                    para oferecer proteção diante de imprevistos.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Pense no papel da reserva
+                    como proteção financeira.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    PRÓXIMA ETAPA
+                </span>
+
+                <h3>
+                    Primeiros investimentos
+                </h3>
+
+                <p>
+                    Com os fundamentos organizados,
+                    vamos conhecer os conceitos básicos
+                    antes de começar a investir.
+                </p>
+
+            </div>
+
+
+            {% if progresso %}
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Aula concluída ✓
+            </a>
+
+            {% else %}
+
+            <span class="learning-locked">
+                🔒 Responda corretamente ao quiz
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

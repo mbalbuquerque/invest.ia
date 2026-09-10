@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Invest.AI{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="app-body">
+
+    <header class="app-header">
+        <div class="app-header-inner">
+
+            <a href="{% url 'dashboard' %}" class="app-brand">
+                Invest.AI
+            </a>
+
+            <nav class="app-nav">
+                <a href="{% url 'dashboard' %}">Visão geral</a>
+                <a href="#">Perfil Vivo</a>
+                <a href="#">Carteira</a>
+                <a href="#">Simuladores</a>
+                <a href="#">Radar</a>
+                <a href="#">Agente IA</a>
+            </nav>
+
+            <div class="app-user">
+                <span>
+                    {{ request.user.username }}
+                </span>
+
+                <form method="post" action="{% url 'accounts:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="app-logout">
+                        Sair
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="app-main">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

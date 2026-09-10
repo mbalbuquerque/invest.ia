@@ -1,0 +1,62 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Resultado do Perfil Vivo | Invest.AI
+{% endblock %}
+
+{% block content %}
+
+<section class="profile-result">
+
+    <span class="dashboard-eyebrow">
+        PERFIL VIVO
+    </span>
+
+    <h1>
+        Seu perfil inicial
+    </h1>
+
+    <div class="profile-result-card">
+
+        <span class="profile-result-label">
+            CLASSIFICAÇÃO
+        </span>
+
+        <h2>
+            {{ perfil.get_classificacao_display }}
+        </h2>
+
+        <div class="profile-score">
+            {{ perfil.score }}
+            <small>/100</small>
+        </div>
+
+        <p>
+            Este resultado representa sua avaliação inicial
+            com base nas respostas fornecidas.
+        </p>
+
+    </div>
+
+
+    <div class="profile-result-actions">
+
+        <a
+            href="{% url 'perfil:avaliacao' %}"
+            class="app-button app-button-secondary"
+        >
+            Refazer avaliação
+        </a>
+
+        <a
+            href="{% url 'dashboard' %}"
+            class="app-button"
+        >
+            Voltar ao painel
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

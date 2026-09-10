@@ -1,0 +1,399 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Primeiros investimentos | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 07
+        </span>
+
+        <h1>
+            Primeiros investimentos
+        </h1>
+
+        <p>
+            Antes de escolher um investimento,
+            é importante entender alguns conceitos
+            que ajudam a comparar diferentes alternativas.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Investir tem objetivo
+            </h2>
+
+            <p>
+                O investimento deve estar relacionado
+                a uma finalidade.
+            </p>
+
+            <p>
+                Exemplos:
+            </p>
+
+            <ul>
+                <li>Reserva de emergência;</li>
+                <li>Compra de um imóvel;</li>
+                <li>Educação;</li>
+                <li>Aposentadoria;</li>
+                <li>Construção de patrimônio.</li>
+            </ul>
+
+            <div class="lesson-highlight">
+                O melhor investimento depende
+                do objetivo, prazo e necessidade do usuário.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Entenda o risco
+            </h2>
+
+            <p>
+                Todo investimento possui algum tipo de risco.
+            </p>
+
+            <p>
+                Alguns podem apresentar maior oscilação,
+                outros podem ter risco de crédito,
+                liquidez ou mudanças nas condições de mercado.
+            </p>
+
+            <p>
+                Por isso, rentabilidade nunca deve
+                ser analisada isoladamente.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                Liquidez
+            </h2>
+
+            <p>
+                Liquidez está relacionada à facilidade
+                e ao prazo necessário para transformar
+                um investimento em dinheiro disponível.
+            </p>
+
+            <div class="lesson-highlight">
+                Quanto mais cedo você pode precisar do dinheiro,
+                mais importante a liquidez pode se tornar.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                04
+            </span>
+
+            <h2>
+                Prazo
+            </h2>
+
+            <p>
+                Um objetivo para daqui a alguns meses
+                é diferente de um objetivo para daqui
+                a vinte anos.
+            </p>
+
+            <p>
+                O horizonte ajuda a determinar
+                quais características de investimento
+                fazem sentido para cada situação.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                05
+            </span>
+
+            <h2>
+                Rentabilidade
+            </h2>
+
+            <p>
+                Rentabilidade mostra como o valor
+                de um investimento se comportou
+                durante determinado período.
+            </p>
+
+            <p>
+                Mas retornos passados não significam
+                que os mesmos resultados ocorrerão no futuro.
+            </p>
+
+            <div class="lesson-highlight">
+                Compare risco, liquidez, prazo,
+                custos e rentabilidade em conjunto.
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                06
+            </span>
+
+            <h2>
+                Diversificação
+            </h2>
+
+            <p>
+                Concentrar todo o patrimônio
+                em uma única alternativa pode aumentar
+                determinados riscos.
+            </p>
+
+            <p>
+                Diversificação significa distribuir recursos
+                entre diferentes investimentos,
+                considerando objetivos e perfil.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card lesson-question">
+
+            <span class="dashboard-eyebrow">
+                SITUAÇÃO PRÁTICA
+            </span>
+
+            <h2>
+                Duas pessoas podem precisar
+                de investimentos diferentes
+            </h2>
+
+            <p>
+                Uma pessoa precisa do dinheiro
+                para uma emergência.
+            </p>
+
+            <p>
+                Outra está investindo pensando
+                na aposentadoria daqui a 25 anos.
+            </p>
+
+            <p>
+                Mesmo que ambas tenham dinheiro disponível,
+                seus objetivos e horizontes são diferentes.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE FINAL
+            </span>
+
+            <h2>
+                Antes de escolher um investimento,
+                o que devemos considerar?
+            </h2>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Apenas qual investimento
+                    rendeu mais no passado.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    Apenas a opinião de outras pessoas.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Objetivo, prazo, liquidez,
+                    risco, custos e características
+                    do investimento.
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Concluir trilha
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Parabéns! Trilha concluída.
+                </strong>
+
+                <p>
+                    Você concluiu os fundamentos
+                    de educação financeira do Invest.AI.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Investir envolve mais do que
+                    observar rentabilidade.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        {% if progresso %}
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    TRILHA CONCLUÍDA
+                </span>
+
+                <h3>
+                    Fundamentos financeiros ✓
+                </h3>
+
+                <p>
+                    Você completou a primeira jornada:
+                    Aprender → Organizar → Investir.
+                </p>
+
+            </div>
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Ver meu progresso
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    ETAPA FINAL
+                </span>
+
+                <h3>
+                    Conclua o teste
+                </h3>
+
+                <p>
+                    Responda corretamente para finalizar
+                    sua primeira trilha financeira.
+                </p>
+
+            </div>
+
+            <span class="learning-locked">
+                🔒 Conclua o teste final
+            </span>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

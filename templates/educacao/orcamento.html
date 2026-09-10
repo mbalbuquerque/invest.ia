@@ -1,0 +1,416 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Orçamento | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 02
+        </span>
+
+        <h1>
+            Orçamento
+        </h1>
+
+        <p>
+            Um orçamento ajuda você a entender quanto dinheiro
+            entra, quanto sai e quais escolhas podem ser feitas
+            com mais segurança.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+        <!-- BLOCO 1 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Comece entendendo sua renda
+            </h2>
+
+            <p>
+                Antes de organizar os gastos, precisamos saber
+                quanto dinheiro está disponível.
+            </p>
+
+            <p>
+                A renda pode vir de salário, aposentadoria,
+                trabalhos extras, mesada ou outras fontes.
+            </p>
+
+            <div class="lesson-highlight">
+
+                O primeiro passo de um orçamento é saber
+                quanto realmente entra por mês.
+
+            </div>
+
+        </article>
+
+
+        <!-- BLOCO 2 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Conheça suas despesas
+            </h2>
+
+            <p>
+                Depois, precisamos identificar para onde
+                o dinheiro está indo.
+            </p>
+
+            <p>
+                Algumas despesas são essenciais, como:
+            </p>
+
+            <ul>
+
+                <li>
+                    Moradia
+                </li>
+
+                <li>
+                    Alimentação
+                </li>
+
+                <li>
+                    Transporte
+                </li>
+
+                <li>
+                    Saúde
+                </li>
+
+                <li>
+                    Educação
+                </li>
+
+            </ul>
+
+            <p>
+                Outras despesas podem estar ligadas
+                a lazer, desejos ou compras por impulso.
+            </p>
+
+        </article>
+
+
+        <!-- BLOCO 3 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                Receita - despesas = resultado
+            </h2>
+
+            <p>
+                Imagine uma pessoa com renda mensal de
+                <strong>R$ 2.000</strong>.
+            </p>
+
+            <div class="lesson-example">
+
+                <div>
+                    <span>
+                        Receita
+                    </span>
+
+                    <strong>
+                        R$ 2.000
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Despesas
+                    </span>
+
+                    <strong>
+                        R$ 1.700
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Saldo
+                    </span>
+
+                    <strong>
+                        R$ 300
+                    </strong>
+                </div>
+
+            </div>
+
+            <p>
+                Nesse exemplo, existem R$ 300 disponíveis
+                para objetivos, reserva ou outras prioridades.
+            </p>
+
+        </article>
+
+
+        <!-- BLOCO 4 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                04
+            </span>
+
+            <h2>
+                Quando as despesas são maiores
+                que a renda
+            </h2>
+
+            <p>
+                Se uma pessoa recebe R$ 2.000,
+                mas gasta R$ 2.300 todos os meses,
+                existe um déficit de R$ 300.
+            </p>
+
+            <div class="lesson-highlight">
+
+                Déficits recorrentes podem levar
+                ao uso de cartão, cheque especial,
+                empréstimos e ao crescimento das dívidas.
+
+            </div>
+
+            <p>
+                Por isso, identificar o problema cedo
+                é uma das formas de prevenir o endividamento.
+            </p>
+
+        </article>
+
+
+        <!-- EXERCÍCIO -->
+
+        <article class="lesson-card lesson-question">
+
+            <span class="dashboard-eyebrow">
+                EXERCÍCIO
+            </span>
+
+            <h2>
+                Faça esta conta
+            </h2>
+
+            <p>
+                Uma família recebe R$ 3.500 por mês.
+            </p>
+
+            <p>
+                Suas despesas mensais são:
+            </p>
+
+            <ul>
+
+                <li>
+                    Moradia: R$ 1.200
+                </li>
+
+                <li>
+                    Alimentação: R$ 900
+                </li>
+
+                <li>
+                    Transporte: R$ 500
+                </li>
+
+                <li>
+                    Outras despesas: R$ 600
+                </li>
+
+            </ul>
+
+            <p>
+                Total de despesas:
+                <strong>R$ 3.200</strong>
+            </p>
+
+            <p>
+                Quanto sobra no orçamento?
+            </p>
+
+        </article>
+
+
+        <!-- QUIZ -->
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE RÁPIDO
+            </span>
+
+            <h2>
+                Qual é o resultado desse orçamento?
+            </h2>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Faltam R$ 300
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    O orçamento termina em zero
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Sobram R$ 300
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Verificar resposta
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Resposta correta!
+                </strong>
+
+                <p>
+                    R$ 3.500 de renda menos R$ 3.200
+                    de despesas resulta em R$ 300 disponíveis.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Calcule a renda total menos
+                    o total das despesas.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- PRÓXIMA ETAPA -->
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    PRÓXIMA ETAPA
+                </span>
+
+                <h3>
+                    Consumo consciente
+                </h3>
+
+                <p>
+                    Na próxima aula vamos aprender
+                    como diferenciar necessidade,
+                    desejo e impulso.
+                </p>
+
+            </div>
+
+
+            {% if progresso %}
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Aula concluída ✓
+            </a>
+
+            {% else %}
+
+            <span class="learning-locked">
+
+                🔒 Responda corretamente ao quiz
+
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

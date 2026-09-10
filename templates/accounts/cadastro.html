@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Criar conta | Invest.AI</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/styles.css' %}"
+    >
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <a href="{% url 'core:home' %}">
+                Invest
+            </a>
+
+            <h1>Crie sua conta</h1>
+
+            <p>
+                Comece sua jornada com mais clareza financeira.
+            </p>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <div>
+                    <label for="{{ form.username.id_for_label }}">
+                        Usuário
+                    </label>
+
+                    {{ form.username }}
+
+                    {{ form.username.errors }}
+                </div>
+
+                <div>
+                    <label for="{{ form.email.id_for_label }}">
+                        E-mail
+                    </label>
+
+                    {{ form.email }}
+
+                    {{ form.email.errors }}
+                </div>
+
+                <div>
+                    <label for="{{ form.password1.id_for_label }}">
+                        Senha
+                    </label>
+
+                    {{ form.password1 }}
+
+                    {{ form.password1.errors }}
+                </div>
+
+                <div>
+                    <label for="{{ form.password2.id_for_label }}">
+                        Confirmar senha
+                    </label>
+
+                    {{ form.password2 }}
+
+                    {{ form.password2.errors }}
+                </div>
+
+                <button type="submit">
+                    Criar minha conta
+                </button>
+
+            </form>
+
+            <p>
+                Já possui conta?
+
+                <a href="{% url 'accounts:login' %}">
+                    Entrar
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

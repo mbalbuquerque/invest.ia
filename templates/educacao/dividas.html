@@ -1,0 +1,466 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Dívidas | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 05
+        </span>
+
+        <h1>
+            Dívidas
+        </h1>
+
+        <p>
+            Ter uma dívida não significa necessariamente
+            falta de organização. O mais importante é entender
+            seu custo, sua prioridade e sua capacidade de pagamento.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Identifique todas as dívidas
+            </h2>
+
+            <p>
+                O primeiro passo para organizar uma situação
+                de endividamento é saber exatamente
+                quais compromissos existem.
+            </p>
+
+            <p>
+                Para cada dívida, registre:
+            </p>
+
+            <ul>
+                <li>Saldo devedor;</li>
+                <li>Valor da parcela;</li>
+                <li>Taxa de juros;</li>
+                <li>Prazo restante;</li>
+                <li>Data de vencimento;</li>
+                <li>Possibilidade de negociação.</li>
+            </ul>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Nem toda dívida custa igual
+            </h2>
+
+            <p>
+                Dívidas diferentes podem possuir custos
+                muito diferentes.
+            </p>
+
+            <div class="lesson-highlight">
+                Quanto maior a taxa de juros,
+                mais rapidamente a dívida pode crescer.
+            </div>
+
+            <p>
+                Por isso, comparar taxas e condições
+                ajuda a definir prioridades.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                Cuidado ao assumir uma nova dívida
+                para pagar outra
+            </h2>
+
+            <p>
+                Trocar uma dívida por outra pode fazer sentido
+                apenas quando as novas condições realmente
+                melhoram a situação.
+            </p>
+
+            <p>
+                É importante comparar:
+            </p>
+
+            <ul>
+                <li>Taxa de juros;</li>
+                <li>Custo total;</li>
+                <li>Número de parcelas;</li>
+                <li>Valor mensal comprometido;</li>
+                <li>Outras taxas e encargos.</li>
+            </ul>
+
+        </article>
+
+
+        <!-- =====================================
+             SIMULADOR
+        ====================================== -->
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                SIMULE E APRENDA
+            </span>
+
+            <h2>
+                Quanto tempo uma dívida pode durar?
+            </h2>
+
+            <p>
+                Faça uma simulação simplificada.
+            </p>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="acao"
+                    value="simular"
+                >
+
+
+                <div class="simulator-field">
+
+                    <label>
+                        Valor atual da dívida
+                    </label>
+
+                    <input
+                        type="number"
+                        name="valor_divida"
+                        min="0"
+                        step="0.01"
+                        placeholder="Ex.: 5000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="simulator-field">
+
+                    <label>
+                        Juros mensais (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="juros"
+                        min="0"
+                        step="0.01"
+                        placeholder="Ex.: 3"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="simulator-field">
+
+                    <label>
+                        Quanto pretende pagar por mês?
+                    </label>
+
+                    <input
+                        type="number"
+                        name="pagamento"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Ex.: 500"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Simular
+                </button>
+
+            </form>
+
+
+            {% if simulacao %}
+
+                {% if simulacao.status == "quitada" %}
+
+                    <div class="lesson-highlight">
+
+                        <p>
+                            Tempo estimado:
+                            <strong>
+                                {{ simulacao.meses }} meses
+                            </strong>
+                        </p>
+
+                        <p>
+                            Total pago:
+                            <strong>
+                                R$ {{ simulacao.total_pago|floatformat:2 }}
+                            </strong>
+                        </p>
+
+                        <p>
+                            Juros pagos:
+                            <strong>
+                                R$ {{ simulacao.juros_total|floatformat:2 }}
+                            </strong>
+                        </p>
+
+                    </div>
+
+
+                {% elif simulacao.status == "nao_quita" %}
+
+                    <div class="quiz-feedback quiz-error">
+
+                        <strong>
+                            Atenção
+                        </strong>
+
+                        <p>
+                            Com esses valores, o pagamento mensal
+                            não consegue reduzir adequadamente
+                            o saldo da dívida.
+                        </p>
+
+                        <p>
+                            Isso acontece quando os juros consumem
+                            grande parte ou todo o valor pago.
+                        </p>
+
+                    </div>
+
+
+                {% else %}
+
+                    <div class="quiz-feedback quiz-error">
+
+                        <strong>
+                            Não foi possível calcular.
+                        </strong>
+
+                        <p>
+                            Confira os valores informados.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            {% endif %}
+
+
+            <p>
+                Esta é uma simulação educacional simplificada.
+                Contratos reais podem incluir taxas,
+                seguros, impostos e outras condições.
+            </p>
+
+        </article>
+
+
+        <!-- =====================================
+             QUIZ
+        ====================================== -->
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE RÁPIDO
+            </span>
+
+            <h2>
+                Ao organizar várias dívidas,
+                qual informação é especialmente importante?
+            </h2>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="acao"
+                    value="quiz"
+                >
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Apenas o nome da instituição.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    Saldo, juros, parcelas
+                    e condições de cada dívida.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Apenas o valor da menor parcela.
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Verificar resposta
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Resposta correta!
+                </strong>
+
+                <p>
+                    Conhecer saldo, taxas, parcelas
+                    e condições permite comparar
+                    e organizar melhor as prioridades.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Para organizar uma dívida,
+                    precisamos olhar além do valor
+                    da parcela.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- =====================================
+             PRÓXIMA ETAPA
+        ====================================== -->
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    PRÓXIMA ETAPA
+                </span>
+
+                <h3>
+                    Reserva de emergência
+                </h3>
+
+                <p>
+                    Depois de entender orçamento,
+                    crédito e dívidas, vamos aprender
+                    como criar proteção para imprevistos.
+                </p>
+
+            </div>
+
+
+            {% if progresso %}
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Aula concluída ✓
+            </a>
+
+            {% else %}
+
+            <span class="learning-locked">
+                🔒 Responda corretamente ao quiz
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

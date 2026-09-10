@@ -1,0 +1,77 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Perfil Vivo | Invest.AI
+{% endblock %}
+
+{% block content %}
+
+<section class="profile-assessment">
+
+    <div class="profile-assessment-header">
+
+        <span class="dashboard-eyebrow">
+            PERFIL VIVO
+        </span>
+
+        <h1>
+            Vamos entender seu momento como investidor
+        </h1>
+
+        <p>
+            Suas respostas ajudam o Invest.AI a construir
+            uma primeira leitura do seu perfil.
+        </p>
+
+    </div>
+
+
+    <form method="post" class="profile-form">
+
+        {% csrf_token %}
+
+        {% for field in form %}
+
+            <fieldset class="profile-question">
+
+                <legend>
+                    {{ field.label }}
+                </legend>
+
+                {% for choice in field %}
+
+                    <label class="profile-option">
+
+                        {{ choice.tag }}
+
+                        <span>
+                            {{ choice.choice_label }}
+                        </span>
+
+                    </label>
+
+                {% endfor %}
+
+                {% if field.errors %}
+                    <div class="auth-error">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+            </fieldset>
+
+        {% endfor %}
+
+
+        <button
+            type="submit"
+            class="app-button profile-submit"
+        >
+            Ver meu Perfil Vivo
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

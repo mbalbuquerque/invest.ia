@@ -1,0 +1,353 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Consumo consciente | Invest.AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            EDUCAÇÃO FINANCEIRA · ETAPA 03
+        </span>
+
+        <h1>
+            Consumo consciente
+        </h1>
+
+        <p>
+            Consumir faz parte da vida. O objetivo não é deixar
+            de comprar, mas aprender a tomar decisões com mais
+            consciência e menos impulso.
+        </p>
+
+    </div>
+
+
+    <div class="lesson-content">
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                01
+            </span>
+
+            <h2>
+                Necessidade, desejo e impulso
+            </h2>
+
+            <p>
+                Nem todo gasto tem a mesma importância.
+            </p>
+
+            <p>
+                Uma <strong>necessidade</strong> está relacionada
+                a algo importante para o cotidiano, como alimentação,
+                transporte, saúde ou moradia.
+            </p>
+
+            <p>
+                Um <strong>desejo</strong> pode melhorar nosso conforto
+                ou satisfação, mas nem sempre precisa ser realizado
+                imediatamente.
+            </p>
+
+            <p>
+                Já uma compra por <strong>impulso</strong> acontece
+                quando decidimos rapidamente, sem avaliar o impacto
+                daquela escolha no orçamento.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                02
+            </span>
+
+            <h2>
+                Promoção não significa economia
+            </h2>
+
+            <p>
+                Uma promoção pode parecer uma oportunidade,
+                mas só existe economia quando aquela compra
+                realmente faz sentido.
+            </p>
+
+            <div class="lesson-highlight">
+
+                Comprar algo desnecessário por R$ 100,
+                mesmo que antes custasse R$ 150,
+                continua sendo um gasto de R$ 100.
+
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                03
+            </span>
+
+            <h2>
+                Cuidado com o parcelamento
+            </h2>
+
+            <p>
+                Parcelar pode facilitar uma compra,
+                mas também pode comprometer parte da renda
+                dos próximos meses.
+            </p>
+
+            <p>
+                Quando várias parcelas são acumuladas,
+                o orçamento futuro pode ficar muito mais apertado.
+            </p>
+
+            <div class="lesson-highlight">
+
+                Antes de parcelar, observe não apenas
+                o valor da parcela, mas o valor total
+                e o impacto das parcelas futuras.
+
+            </div>
+
+        </article>
+
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">
+                04
+            </span>
+
+            <h2>
+                Use a regra da pausa
+            </h2>
+
+            <p>
+                Para compras não essenciais, esperar algum tempo
+                antes de decidir pode ajudar a reduzir compras
+                por impulso.
+            </p>
+
+            <p>
+                Antes de comprar, pergunte:
+            </p>
+
+            <ol>
+                <li>
+                    Eu realmente preciso disso?
+                </li>
+
+                <li>
+                    Eu já tinha planejado essa compra?
+                </li>
+
+                <li>
+                    Tenho dinheiro disponível sem comprometer
+                    despesas importantes?
+                </li>
+
+                <li>
+                    Essa compra pode esperar?
+                </li>
+            </ol>
+
+        </article>
+
+
+        <article class="lesson-card lesson-question">
+
+            <span class="dashboard-eyebrow">
+                SITUAÇÃO PRÁTICA
+            </span>
+
+            <h2>
+                Imagine esta situação:
+            </h2>
+
+            <p>
+                Você entra em uma loja apenas para pesquisar preços.
+            </p>
+
+            <p>
+                Um produto que você não pretendia comprar
+                está com uma placa:
+            </p>
+
+            <div class="lesson-highlight">
+
+                “Só hoje — 40% de desconto!”
+
+            </div>
+
+            <p>
+                Você tem dinheiro disponível,
+                mas também possui um objetivo financeiro
+                importante para os próximos meses.
+            </p>
+
+        </article>
+
+
+        <article class="lesson-card lesson-quiz">
+
+            <span class="dashboard-eyebrow">
+                TESTE RÁPIDO
+            </span>
+
+            <h2>
+                Qual atitude demonstra maior consciência financeira?
+            </h2>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="A"
+                        required
+                    >
+
+                    Comprar imediatamente porque
+                    o desconto termina hoje.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="B"
+                        required
+                    >
+
+                    Avaliar se a compra é necessária
+                    e se ela prejudica o objetivo financeiro.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="resposta"
+                        value="C"
+                        required
+                    >
+
+                    Parcelar para que o gasto pareça menor.
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="app-button"
+                >
+                    Verificar resposta
+                </button>
+
+            </form>
+
+
+            {% if resultado == "correta" %}
+
+            <div class="quiz-feedback quiz-success">
+
+                <strong>
+                    Resposta correta!
+                </strong>
+
+                <p>
+                    Um desconto não deve ser o único motivo
+                    para realizar uma compra. É importante avaliar
+                    necessidade, orçamento e objetivos.
+                </p>
+
+            </div>
+
+
+            {% elif resultado == "incorreta" %}
+
+            <div class="quiz-feedback quiz-error">
+
+                <strong>
+                    Tente novamente.
+                </strong>
+
+                <p>
+                    Pense no impacto da compra sobre
+                    suas prioridades e objetivos financeiros.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <div class="lesson-next">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    PRÓXIMA ETAPA
+                </span>
+
+                <h3>
+                    Crédito e juros
+                </h3>
+
+                <p>
+                    Na próxima aula vamos entender cartão,
+                    parcelamento, empréstimos e o custo dos juros.
+                </p>
+
+            </div>
+
+
+            {% if progresso %}
+
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button"
+            >
+                Aula concluída ✓
+            </a>
+
+            {% else %}
+
+            <span class="learning-locked">
+                🔒 Responda corretamente ao quiz
+            </span>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
