@@ -214,33 +214,61 @@ Dinheiro e escolhas | Invest.AI
 
     {% if resultado == "correta" %}
 
-        <div class="quiz-feedback quiz-feedback-success">
+    <div class="quiz-feedback quiz-feedback-success">
 
-            <strong>Resposta correta!</strong>
+        <div class="quiz-feedback-icon">
+            ✓
+        </div>
+
+        <div class="quiz-feedback-content">
+
+            <strong>
+                Muito bem! Você acertou.
+            </strong>
 
             <p>
-                Antes de gastar, é importante verificar
-                se existem despesas, prioridades ou objetivos
-                mais importantes para o seu dinheiro.
+                Antes de gastar, verificar despesas, prioridades
+                e objetivos ajuda a tomar decisões financeiras
+                mais conscientes.
             </p>
+
+            <span class="quiz-feedback-tip">
+                Aula concluída. Você já pode avançar.
+            </span>
 
         </div>
 
-    {% elif resultado == "incorreta" %}
+    </div>
 
-        <div class="quiz-feedback quiz-feedback-error">
+{% elif resultado == "incorreta" %}
 
-            <strong>Ainda não.</strong>
+    <div class="quiz-feedback quiz-feedback-error">
+
+        <div class="quiz-feedback-icon">
+            ✕
+        </div>
+
+        <div class="quiz-feedback-content">
+
+            <strong>
+                Quase! Essa não é a melhor decisão.
+            </strong>
 
             <p>
-                Pense novamente sobre prioridades,
-                necessidades e objetivos antes de realizar
-                uma compra.
+                Ter dinheiro disponível não significa que ele
+                precisa ser gasto imediatamente. Pense primeiro
+                nas suas necessidades, despesas e objetivos.
             </p>
+
+            <span class="quiz-try-again">
+                Reveja as alternativas e tente novamente ↑
+            </span>
 
         </div>
 
-    {% endif %}
+    </div>
+
+{% endif %}
 
 </article>
 
