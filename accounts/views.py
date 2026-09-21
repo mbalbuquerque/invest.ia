@@ -2,6 +2,8 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
+from perfil.models import PerfilInvestidor
+
 from .forms import CadastroForm
 
 
@@ -22,10 +24,25 @@ def cadastro(request):
     return render(
         request,
         "accounts/cadastro.html",
-        {"form": form},
+        {
+            "form": form,
+        },
     )
 
 
 @login_required
 def dashboard(request):
-    return render(request, "accounts/dashboard.html")
+    try:
+        perfil = request.user.perfil_investidor
+    except PerfilInvestidor.DoesNotExist:
+        perfil = None
+
+    context = {
+        "perfil": perfil,
+    }
+
+    return render(
+        request,
+        "accounts/dashboard.html",
+        context,
+    )

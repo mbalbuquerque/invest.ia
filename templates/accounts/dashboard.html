@@ -18,7 +18,8 @@ Painel | Invest.AI
         </h1>
 
         <p>
-            Acompanhe seu perfil, seus investimentos e os próximos passos da sua jornada financeira.
+            Acompanhe seu perfil, seus investimentos e os próximos passos
+            da sua jornada financeira.
         </p>
     </div>
 
@@ -27,26 +28,78 @@ Painel | Invest.AI
 
 <section class="dashboard-cards">
 
+    <!-- =====================================================
+         PERFIL VIVO
+         ===================================================== -->
+
     <article class="dashboard-card">
 
         <span class="dashboard-card-label">
             PERFIL VIVO
         </span>
 
-        <h2>
-            Não avaliado
-        </h2>
+        {% if perfil and perfil.classificacao %}
 
-        <p>
-            Descubra seu perfil atual de investidor.
-        </p>
+            <h2>
+                {{ perfil.get_classificacao_display }}
+            </h2>
 
-       <a href="{% url 'perfil:avaliacao' %}">
-    Iniciar avaliação →
-</a>
+            <p>
+                Seu perfil atual foi calculado com base nas respostas
+                da sua avaliação.
+            </p>
+
+            <div class="profile-summary">
+
+                <span>
+                    Score
+                </span>
+
+                <strong>
+                    {{ perfil.score }} / 100
+                </strong>
+
+            </div>
+
+            <a
+                href="{% url 'perfil:resultado' %}"
+                class="dashboard-link"
+            >
+                Ver resultado →
+            </a>
+
+            <a
+                href="{% url 'perfil:avaliacao' %}"
+                class="dashboard-link"
+            >
+                Refazer avaliação →
+            </a>
+
+        {% else %}
+
+            <h2>
+                Não avaliado
+            </h2>
+
+            <p>
+                Descubra seu perfil atual de investidor.
+            </p>
+
+            <a
+                href="{% url 'perfil:avaliacao' %}"
+                class="dashboard-link"
+            >
+                Iniciar avaliação →
+            </a>
+
+        {% endif %}
 
     </article>
 
+
+    <!-- =====================================================
+         PATRIMÔNIO
+         ===================================================== -->
 
     <article class="dashboard-card">
 
@@ -68,6 +121,10 @@ Painel | Invest.AI
 
     </article>
 
+
+    <!-- =====================================================
+         ALERTAS
+         ===================================================== -->
 
     <article class="dashboard-card">
 
@@ -92,10 +149,16 @@ Painel | Invest.AI
 </section>
 
 
+<!-- =========================================================
+     JORNADA
+     ========================================================= -->
+
 <section class="dashboard-section">
 
     <div class="dashboard-section-header">
+
         <div>
+
             <span class="dashboard-eyebrow">
                 SUA JORNADA
             </span>
@@ -103,11 +166,15 @@ Painel | Invest.AI
             <h2>
                 Comece por aqui
             </h2>
+
         </div>
+
     </div>
 
 
     <div class="journey-grid">
+
+        <!-- ETAPA 01 -->
 
         <article class="journey-card">
 
@@ -119,16 +186,43 @@ Painel | Invest.AI
                 Descubra seu Perfil Vivo
             </h3>
 
-            <p>
-                Responda à avaliação inicial para entendermos seu momento, objetivos e tolerância a risco.
-            </p>
+            {% if perfil and perfil.classificacao %}
 
-            <a href="#" class="app-button">
-                Iniciar avaliação
-            </a>
+                <p>
+                    Sua avaliação já foi realizada.
+                    Seu perfil atual é
+                    <strong>
+                        {{ perfil.get_classificacao_display }}
+                    </strong>.
+                </p>
+
+                <a
+                    href="{% url 'perfil:resultado' %}"
+                    class="app-button"
+                >
+                    Ver meu perfil
+                </a>
+
+            {% else %}
+
+                <p>
+                    Responda à avaliação inicial para entendermos
+                    seu momento, objetivos e tolerância a risco.
+                </p>
+
+                <a
+                    href="{% url 'perfil:avaliacao' %}"
+                    class="app-button"
+                >
+                    Iniciar avaliação
+                </a>
+
+            {% endif %}
 
         </article>
 
+
+        <!-- ETAPA 02 -->
 
         <article class="journey-card">
 
@@ -137,19 +231,26 @@ Painel | Invest.AI
             </span>
 
             <h3>
-                Cadastre sua carteira
+                Educação Financeira
             </h3>
 
             <p>
-                Informe voluntariamente os investimentos que deseja acompanhar no Invest.AI.
+                Aprenda a organizar sua vida financeira,
+                compreender suas escolhas e construir uma
+                jornada mais consciente.
             </p>
 
-            <a href="#" class="app-button app-button-secondary">
-                Adicionar investimentos
+            <a
+                href="{% url 'educacao:inicio' %}"
+                class="app-button app-button-secondary"
+            >
+                Continuar aprendendo
             </a>
 
         </article>
 
+
+        <!-- ETAPA 03 -->
 
         <article class="journey-card">
 
@@ -158,11 +259,39 @@ Painel | Invest.AI
             </span>
 
             <h3>
+                Cadastre sua carteira
+            </h3>
+
+            <p>
+                Informe voluntariamente os investimentos que deseja
+                acompanhar no Invest.AI.
+            </p>
+
+            <a
+                href="#"
+                class="app-button app-button-secondary"
+            >
+                Adicionar investimentos
+            </a>
+
+        </article>
+
+
+        <!-- ETAPA 04 -->
+
+        <article class="journey-card">
+
+            <span class="journey-number">
+                04
+            </span>
+
+            <h3>
                 Receba seu Raio-X
             </h3>
 
             <p>
-                Depois de cadastrar seus ativos, você verá concentração, distribuição e pontos de atenção.
+                Depois de cadastrar seus ativos, você verá concentração,
+                distribuição e pontos de atenção.
             </p>
 
             <span class="journey-disabled">
@@ -175,6 +304,10 @@ Painel | Invest.AI
 
 </section>
 
+
+<!-- =========================================================
+     PARTE INFERIOR
+     ========================================================= -->
 
 <section class="dashboard-bottom-grid">
 
@@ -189,7 +322,8 @@ Painel | Invest.AI
         </h2>
 
         <p>
-            Notícias e análises que poderão ajudar você a compreender eventos relevantes para seus investimentos.
+            Notícias e análises que poderão ajudar você
+            a compreender eventos relevantes para seus investimentos.
         </p>
 
         <a href="#" class="dashboard-link">
@@ -210,7 +344,9 @@ Painel | Invest.AI
         </h2>
 
         <p>
-            O agente explicará seu perfil, carteira, riscos e simulações usando apenas os dados necessários para cada análise.
+            O agente explicará seu perfil, carteira, riscos e
+            simulações usando apenas os dados necessários
+            para cada análise.
         </p>
 
         <a href="#" class="app-button">
