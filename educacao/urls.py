@@ -1,10 +1,17 @@
 from django.urls import path
+
 from . import views
+
 
 app_name = "educacao"
 
+
 urlpatterns = [
-    path("", views.inicio, name="inicio"),
+    path(
+        "",
+        views.inicio,
+        name="inicio",
+    ),
 
     path(
         "dinheiro-e-escolhas/",
@@ -41,10 +48,10 @@ urlpatterns = [
         views.reserva_emergencia,
         name="reserva_emergencia",
     ),
+
     path(
         "primeiros-investimentos/",
         views.primeiros_investimentos,
         name="primeiros_investimentos",
-),
-
+    ),
 ]

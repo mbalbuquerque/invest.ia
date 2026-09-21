@@ -216,7 +216,7 @@ def consumo_consciente(request):
 
     if not aula_concluida(
         request.user,
-        "orcamento"
+        "orçamento"
     ):
         return redirect("educacao:inicio")
 

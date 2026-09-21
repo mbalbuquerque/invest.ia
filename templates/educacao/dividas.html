@@ -15,14 +15,12 @@ Dívidas | Invest.AI
             EDUCAÇÃO FINANCEIRA · ETAPA 05
         </span>
 
-        <h1>
-            Dívidas
-        </h1>
+        <h1>Dívidas</h1>
 
         <p>
-            Ter uma dívida não significa necessariamente
-            falta de organização. O mais importante é entender
-            seu custo, sua prioridade e sua capacidade de pagamento.
+            Ter uma dívida não significa necessariamente falta
+            de organização. O mais importante é entender seu custo,
+            sua prioridade e sua capacidade de pagamento.
         </p>
 
     </div>
@@ -30,26 +28,21 @@ Dívidas | Invest.AI
 
     <div class="lesson-content">
 
+        <!-- 01 -->
 
         <article class="lesson-card">
 
-            <span class="lesson-number">
-                01
-            </span>
+            <span class="lesson-number">01</span>
 
-            <h2>
-                Identifique todas as dívidas
-            </h2>
+            <h2>Identifique todas as dívidas</h2>
 
             <p>
                 O primeiro passo para organizar uma situação
-                de endividamento é saber exatamente
-                quais compromissos existem.
+                de endividamento é saber exatamente quais
+                compromissos existem.
             </p>
 
-            <p>
-                Para cada dívida, registre:
-            </p>
+            <p>Para cada dívida, procure registrar:</p>
 
             <ul>
                 <li>Saldo devedor;</li>
@@ -60,18 +53,20 @@ Dívidas | Invest.AI
                 <li>Possibilidade de negociação.</li>
             </ul>
 
+            <div class="lesson-highlight">
+                O que não é conhecido dificilmente pode ser organizado.
+            </div>
+
         </article>
 
 
+        <!-- 02 -->
+
         <article class="lesson-card">
 
-            <span class="lesson-number">
-                02
-            </span>
+            <span class="lesson-number">02</span>
 
-            <h2>
-                Nem toda dívida custa igual
-            </h2>
+            <h2>Nem toda dívida custa igual</h2>
 
             <p>
                 Dívidas diferentes podem possuir custos
@@ -84,18 +79,18 @@ Dívidas | Invest.AI
             </div>
 
             <p>
-                Por isso, comparar taxas e condições
-                ajuda a definir prioridades.
+                Por isso, comparar taxas, saldo devedor e condições
+                ajuda a definir quais compromissos merecem maior atenção.
             </p>
 
         </article>
 
 
+        <!-- 03 -->
+
         <article class="lesson-card">
 
-            <span class="lesson-number">
-                03
-            </span>
+            <span class="lesson-number">03</span>
 
             <h2>
                 Cuidado ao assumir uma nova dívida
@@ -104,13 +99,11 @@ Dívidas | Invest.AI
 
             <p>
                 Trocar uma dívida por outra pode fazer sentido
-                apenas quando as novas condições realmente
-                melhoram a situação.
+                quando as novas condições realmente melhoram
+                a situação.
             </p>
 
-            <p>
-                É importante comparar:
-            </p>
+            <p>Antes de decidir, compare:</p>
 
             <ul>
                 <li>Taxa de juros;</li>
@@ -120,12 +113,67 @@ Dívidas | Invest.AI
                 <li>Outras taxas e encargos.</li>
             </ul>
 
+            <div class="lesson-highlight">
+                Trocar uma dívida cara por outra mais barata pode
+                ajudar. Apenas criar uma nova dívida sem resolver
+                a anterior pode aumentar o problema.
+            </div>
+
         </article>
 
 
-        <!-- =====================================
-             SIMULADOR
-        ====================================== -->
+        <!-- 04 -->
+
+        <article class="lesson-card">
+
+            <span class="lesson-number">04</span>
+
+            <h2>Crie uma ordem de prioridade</h2>
+
+            <p>
+                Quando existem vários compromissos, organizar
+                informações permite enxergar melhor a situação.
+            </p>
+
+            <p>
+                Dívidas com juros elevados ou consequências mais
+                graves pelo atraso podem exigir atenção especial.
+            </p>
+
+            <div class="lesson-highlight">
+                Priorizar não significa ignorar as outras dívidas.
+                Significa organizar uma estratégia de pagamento.
+            </div>
+
+        </article>
+
+
+        <!-- DICA -->
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                DICA INVEST.AI
+            </span>
+
+            <h2>Negociar também faz parte da organização</h2>
+
+            <p>
+                Se uma dívida se tornou difícil de pagar,
+                conhecer o saldo e as condições atuais ajuda
+                antes de buscar uma renegociação.
+            </p>
+
+            <p>
+                Compare a nova proposta com a situação anterior
+                e verifique se o novo compromisso realmente
+                cabe no orçamento.
+            </p>
+
+        </article>
+
+
+        <!-- SIMULADOR -->
 
         <article class="lesson-card">
 
@@ -133,12 +181,12 @@ Dívidas | Invest.AI
                 SIMULE E APRENDA
             </span>
 
-            <h2>
-                Quanto tempo uma dívida pode durar?
-            </h2>
+            <h2>Quanto tempo uma dívida pode durar?</h2>
 
             <p>
-                Faça uma simulação simplificada.
+                Faça uma simulação educacional simplificada
+                e observe como os juros podem influenciar
+                o tempo de pagamento.
             </p>
 
 
@@ -155,14 +203,15 @@ Dívidas | Invest.AI
 
                 <div class="simulator-field">
 
-                    <label>
+                    <label for="valor_divida">
                         Valor atual da dívida
                     </label>
 
                     <input
+                        id="valor_divida"
                         type="number"
                         name="valor_divida"
-                        min="0"
+                        min="0.01"
                         step="0.01"
                         placeholder="Ex.: 5000"
                         required
@@ -173,11 +222,12 @@ Dívidas | Invest.AI
 
                 <div class="simulator-field">
 
-                    <label>
+                    <label for="juros">
                         Juros mensais (%)
                     </label>
 
                     <input
+                        id="juros"
                         type="number"
                         name="juros"
                         min="0"
@@ -191,11 +241,12 @@ Dívidas | Invest.AI
 
                 <div class="simulator-field">
 
-                    <label>
+                    <label for="pagamento">
                         Quanto pretende pagar por mês?
                     </label>
 
                     <input
+                        id="pagamento"
                         type="number"
                         name="pagamento"
                         min="0.01"
@@ -211,7 +262,7 @@ Dívidas | Invest.AI
                     type="submit"
                     class="app-button"
                 >
-                    Simular
+                    Simular dívida
                 </button>
 
             </form>
@@ -221,65 +272,100 @@ Dívidas | Invest.AI
 
                 {% if simulacao.status == "quitada" %}
 
-                    <div class="lesson-highlight">
+                    <div class="quiz-feedback quiz-feedback-success">
 
-                        <p>
-                            Tempo estimado:
-                            <strong>
-                                {{ simulacao.meses }} meses
-                            </strong>
-                        </p>
+                        <div class="quiz-feedback-icon">
+                            ✓
+                        </div>
 
-                        <p>
-                            Total pago:
-                            <strong>
-                                R$ {{ simulacao.total_pago|floatformat:2 }}
-                            </strong>
-                        </p>
+                        <div class="quiz-feedback-content">
 
-                        <p>
-                            Juros pagos:
                             <strong>
-                                R$ {{ simulacao.juros_total|floatformat:2 }}
+                                A dívida seria quitada nessa simulação.
                             </strong>
-                        </p>
+
+                            <p>
+                                Tempo estimado:
+                                <strong>
+                                    {{ simulacao.meses }} meses
+                                </strong>
+                            </p>
+
+                            <p>
+                                Total pago:
+                                <strong>
+                                    R$ {{ simulacao.total_pago|floatformat:2 }}
+                                </strong>
+                            </p>
+
+                            <p>
+                                Juros pagos:
+                                <strong>
+                                    R$ {{ simulacao.juros_total|floatformat:2 }}
+                                </strong>
+                            </p>
+
+                        </div>
 
                     </div>
 
 
                 {% elif simulacao.status == "nao_quita" %}
 
-                    <div class="quiz-feedback quiz-error">
+                    <div class="quiz-feedback quiz-feedback-error">
 
-                        <strong>
-                            Atenção
-                        </strong>
+                        <div class="quiz-feedback-icon">
+                            !
+                        </div>
 
-                        <p>
-                            Com esses valores, o pagamento mensal
-                            não consegue reduzir adequadamente
-                            o saldo da dívida.
-                        </p>
+                        <div class="quiz-feedback-content">
 
-                        <p>
-                            Isso acontece quando os juros consumem
-                            grande parte ou todo o valor pago.
-                        </p>
+                            <strong>
+                                Atenção: a dívida não diminui
+                                adequadamente.
+                            </strong>
+
+                            <p>
+                                Com esses valores, o pagamento mensal
+                                não consegue reduzir o saldo da dívida.
+                            </p>
+
+                            <p>
+                                Isso pode acontecer quando os juros
+                                consomem grande parte ou todo
+                                o pagamento mensal.
+                            </p>
+
+                            <span class="quiz-try-again">
+                                Experimente aumentar o pagamento mensal
+                                ou reduzir a taxa e simule novamente.
+                            </span>
+
+                        </div>
 
                     </div>
 
 
                 {% else %}
 
-                    <div class="quiz-feedback quiz-error">
+                    <div class="quiz-feedback quiz-feedback-error">
 
-                        <strong>
-                            Não foi possível calcular.
-                        </strong>
+                        <div class="quiz-feedback-icon">
+                            ✕
+                        </div>
 
-                        <p>
-                            Confira os valores informados.
-                        </p>
+                        <div class="quiz-feedback-content">
+
+                            <strong>
+                                Não foi possível calcular.
+                            </strong>
+
+                            <p>
+                                Confira os valores informados
+                                e tente novamente.
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -289,17 +375,17 @@ Dívidas | Invest.AI
 
 
             <p>
-                Esta é uma simulação educacional simplificada.
-                Contratos reais podem incluir taxas,
-                seguros, impostos e outras condições.
+                <small>
+                    Esta é uma simulação educacional simplificada.
+                    Contratos reais podem incluir taxas, seguros,
+                    impostos e outras condições.
+                </small>
             </p>
 
         </article>
 
 
-        <!-- =====================================
-             QUIZ
-        ====================================== -->
+        <!-- QUIZ -->
 
         <article class="lesson-card lesson-quiz">
 
@@ -379,45 +465,67 @@ Dívidas | Invest.AI
 
             {% if resultado == "correta" %}
 
-            <div class="quiz-feedback quiz-success">
+                <div class="quiz-feedback quiz-feedback-success">
 
-                <strong>
-                    Resposta correta!
-                </strong>
+                    <div class="quiz-feedback-icon">
+                        ✓
+                    </div>
 
-                <p>
-                    Conhecer saldo, taxas, parcelas
-                    e condições permite comparar
-                    e organizar melhor as prioridades.
-                </p>
+                    <div class="quiz-feedback-content">
 
-            </div>
+                        <strong>
+                            Muito bem! Você acertou.
+                        </strong>
+
+                        <p>
+                            Conhecer saldo, juros, parcelas e condições
+                            permite comparar as dívidas e organizar
+                            melhor as prioridades.
+                        </p>
+
+                        <span class="quiz-feedback-tip">
+                            Aula concluída. A próxima etapa foi liberada.
+                        </span>
+
+                    </div>
+
+                </div>
 
 
             {% elif resultado == "incorreta" %}
 
-            <div class="quiz-feedback quiz-error">
+                <div class="quiz-feedback quiz-feedback-error">
 
-                <strong>
-                    Tente novamente.
-                </strong>
+                    <div class="quiz-feedback-icon">
+                        ✕
+                    </div>
 
-                <p>
-                    Para organizar uma dívida,
-                    precisamos olhar além do valor
-                    da parcela.
-                </p>
+                    <div class="quiz-feedback-content">
 
-            </div>
+                        <strong>
+                            Atenção! Precisamos olhar além da parcela.
+                        </strong>
+
+                        <p>
+                            Para organizar uma dívida, é importante
+                            conhecer também o saldo, os juros,
+                            o prazo e as condições do contrato.
+                        </p>
+
+                        <span class="quiz-try-again">
+                            Reveja as alternativas e tente novamente ↑
+                        </span>
+
+                    </div>
+
+                </div>
 
             {% endif %}
 
         </article>
 
 
-        <!-- =====================================
-             PRÓXIMA ETAPA
-        ====================================== -->
+        <!-- PRÓXIMA ETAPA -->
 
         <div class="lesson-next">
 
@@ -432,9 +540,9 @@ Dívidas | Invest.AI
                 </h3>
 
                 <p>
-                    Depois de entender orçamento,
-                    crédito e dívidas, vamos aprender
-                    como criar proteção para imprevistos.
+                    Depois de entender orçamento, crédito e dívidas,
+                    vamos aprender como criar proteção financeira
+                    para situações inesperadas.
                 </p>
 
             </div>
@@ -442,20 +550,29 @@ Dívidas | Invest.AI
 
             {% if progresso %}
 
-            <a
-                href="{% url 'educacao:inicio' %}"
-                class="app-button"
-            >
-                Aula concluída ✓
-            </a>
+                <a
+                    href="{% url 'educacao:reserva_emergencia' %}"
+                    class="app-button"
+                >
+                    Continuar para etapa 06 →
+                </a>
 
             {% else %}
 
-            <span class="learning-locked">
-                🔒 Responda corretamente ao quiz
-            </span>
+                <span class="learning-locked">
+                    🔒 Acerte o teste rápido para continuar
+                </span>
 
             {% endif %}
+
+        </div>
+
+
+        <div class="lesson-back">
+
+            <a href="{% url 'educacao:inicio' %}">
+                ← Voltar para Educação Financeira
+            </a>
 
         </div>
 
