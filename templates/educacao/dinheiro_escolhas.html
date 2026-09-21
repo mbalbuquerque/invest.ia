@@ -146,91 +146,144 @@ Dinheiro e escolhas | Invest.AI
 
         <article class="lesson-card lesson-quiz">
 
-            <span class="dashboard-eyebrow">
-                TESTE RÁPIDO
-            </span>
+    <span class="dashboard-eyebrow">
+        TESTE RÁPIDO
+    </span>
 
-            <h2>
-                Você recebeu R$ 200 e quer comprar algo
-                que custa R$ 180.
-            </h2>
+    <h2>
+        Você recebeu R$ 200 e quer comprar algo
+        que custa R$ 180.
+    </h2>
+
+    <p>
+        Antes de comprar, qual atitude é mais consciente?
+    </p>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <label class="quiz-option">
+            <input
+                type="radio"
+                name="resposta"
+                value="A"
+                required
+            >
+
+            Comprar imediatamente porque
+            o dinheiro está disponível.
+        </label>
+
+
+        <label class="quiz-option">
+            <input
+                type="radio"
+                name="resposta"
+                value="B"
+                required
+            >
+
+            Verificar se existem despesas
+            e objetivos mais importantes.
+        </label>
+
+
+        <label class="quiz-option">
+            <input
+                type="radio"
+                name="resposta"
+                value="C"
+                required
+            >
+
+            Parcelar para não perceber
+            o impacto do gasto.
+        </label>
+
+
+        <button
+            type="submit"
+            class="app-button"
+        >
+            Verificar resposta
+        </button>
+
+    </form>
+
+
+    {% if resultado == "correta" %}
+
+        <div class="quiz-feedback quiz-feedback-success">
+
+            <strong>Resposta correta!</strong>
 
             <p>
-                Antes de comprar, qual atitude é mais consciente?
+                Antes de gastar, é importante verificar
+                se existem despesas, prioridades ou objetivos
+                mais importantes para o seu dinheiro.
             </p>
 
-            <form>
+        </div>
 
-                <label class="quiz-option">
-                    <input
-                        type="radio"
-                        name="resposta"
-                    >
+    {% elif resultado == "incorreta" %}
 
-                    Comprar imediatamente porque
-                    o dinheiro está disponível.
-                </label>
+        <div class="quiz-feedback quiz-feedback-error">
 
+            <strong>Ainda não.</strong>
 
-                <label class="quiz-option">
-                    <input
-                        type="radio"
-                        name="resposta"
-                    >
+            <p>
+                Pense novamente sobre prioridades,
+                necessidades e objetivos antes de realizar
+                uma compra.
+            </p>
 
-                    Verificar se existem despesas
-                    e objetivos mais importantes.
-                </label>
+        </div>
 
+    {% endif %}
 
-                <label class="quiz-option">
-                    <input
-                        type="radio"
-                        name="resposta"
-                    >
-
-                    Parcelar para não perceber
-                    o impacto do gasto.
-                </label>
-
-
-                <button
-                    type="button"
-                    class="app-button"
-                >
-                    Verificar resposta
-                </button>
-
-            </form>
-
-        </article>
+</article>
 
 
         <div class="lesson-next">
 
-            <div>
+    <div>
 
-                <span class="dashboard-eyebrow">
-                    PRÓXIMA ETAPA
-                </span>
+        <span class="dashboard-eyebrow">
+            PRÓXIMA ETAPA
+        </span>
 
-                <h3>Orçamento</h3>
+        <h3>
+            Orçamento
+        </h3>
 
-                <p>
-                    Na próxima aula vamos entender
-                    como organizar o dinheiro que entra
-                    e o dinheiro que sai.
-                </p>
-
-            </div>
-
-            <span class="learning-locked">
-                🔒 Conclua esta aula
-            </span>
-
-        </div>
+        <p>
+            Na próxima aula vamos entender
+            como organizar o dinheiro que entra
+            e o dinheiro que sai.
+        </p>
 
     </div>
+
+
+    {% if progresso %}
+
+        <a
+            href="{% url 'educacao:orcamento' %}"
+            class="app-button"
+        >
+            Continuar →
+        </a>
+
+    {% else %}
+
+        <span class="learning-locked">
+            🔒 Responda corretamente ao teste
+        </span>
+
+    {% endif %}
+
+</div>
 
 </section>
 
