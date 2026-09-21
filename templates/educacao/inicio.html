@@ -1,7 +1,7 @@
 {% extends "accounts/base_app.html" %}
 
 {% block title %}
-Aprender | Invest.AI
+Educação Financeira | Invest.AI
 {% endblock %}
 
 
@@ -9,9 +9,9 @@ Aprender | Invest.AI
 
 <section class="learning-page">
 
-    <!-- =========================================
+    <!-- =====================================================
          CABEÇALHO
-    ========================================== -->
+         ===================================================== -->
 
     <div class="learning-header">
 
@@ -31,9 +31,9 @@ Aprender | Invest.AI
     </div>
 
 
-    <!-- =========================================
-         RESUMO DO PROGRESSO
-    ========================================== -->
+    <!-- =====================================================
+         RESUMO
+         ===================================================== -->
 
     <div class="learning-summary">
 
@@ -53,7 +53,7 @@ Aprender | Invest.AI
         <div class="learning-summary-item">
 
             <span>
-                Etapa atual
+                Trilha atual
             </span>
 
             <strong>
@@ -78,9 +78,9 @@ Aprender | Invest.AI
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          BARRA DE PROGRESSO
-    ========================================== -->
+         ===================================================== -->
 
     <div class="learning-progress">
 
@@ -90,17 +90,19 @@ Aprender | Invest.AI
                 Progresso da trilha
             </span>
 
-            <span>
+            <strong>
                 {{ percentual }}%
-            </span>
+            </strong>
 
         </div>
+
 
         <div class="learning-progress-bar">
 
             <div
                 class="learning-progress-fill"
-                style="width: {{ percentual }}%;">
+                style="width: {{ percentual }}%;"
+            >
             </div>
 
         </div>
@@ -108,9 +110,44 @@ Aprender | Invest.AI
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================================
+         ESTADO DA TRILHA
+         ===================================================== -->
+
+    {% if percentual == 100 %}
+
+        <div class="learning-congratulations">
+
+            <div class="learning-congratulations-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+                    TRILHA CONCLUÍDA
+                </span>
+
+                <h2>
+                    Fundamentos concluídos!
+                </h2>
+
+                <p>
+                    Você completou todas as etapas desta trilha.
+                    Continue praticando e revise os conteúdos
+                    sempre que precisar.
+                </p>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
          TÍTULO DA TRILHA
-    ========================================== -->
+         ===================================================== -->
 
     <div class="learning-section-title">
 
@@ -118,161 +155,165 @@ Aprender | Invest.AI
             MINHA TRILHA
         </span>
 
-        <h2>
-            Comece pelos fundamentos
-        </h2>
+        {% if percentual == 100 %}
 
-        <p>
-            Cada etapa prepara você para tomar decisões
-            financeiras mais conscientes.
-        </p>
+            <h2>
+                Fundamentos
+            </h2>
+
+            <p>
+                Todas as aulas foram concluídas.
+                Você pode revisar qualquer conteúdo abaixo.
+            </p>
+
+        {% else %}
+
+            <h2>
+                Comece pelos fundamentos
+            </h2>
+
+            <p>
+                Cada etapa prepara você para tomar
+                decisões financeiras mais conscientes.
+            </p>
+
+        {% endif %}
 
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          AULAS
-    ========================================== -->
+         ===================================================== -->
 
     <div class="learning-grid">
 
         {% for trilha in trilhas %}
 
-        <article
-            class="
-                learning-card
+            <article
+                class="learning-card
                 {% if trilha.concluida %}
                     learning-card-completed
-                {% endif %}
-            "
-        >
+                {% endif %}"
+            >
 
-            <!-- NÚMERO -->
+                <!-- NÚMERO / CONCLUÍDA -->
 
-            <div class="learning-number">
-
-                {% if trilha.concluida %}
-
-                    ✓
-
-                {% else %}
-
-                    {{ trilha.numero|stringformat:"02d" }}
-
-                {% endif %}
-
-            </div>
-
-
-            <!-- CONTEÚDO -->
-
-            <div class="learning-card-content">
-
-                <div class="learning-card-header">
-
-                    <h3>
-                        {{ trilha.titulo }}
-                    </h3>
-
+                <div class="learning-number">
 
                     {% if trilha.concluida %}
 
-                        <span class="learning-completed">
-                            ✓ Aula concluída
-                        </span>
+                        ✓
+
+                    {% else %}
+
+                        {{ trilha.numero|stringformat:"02d" }}
 
                     {% endif %}
 
                 </div>
 
 
-                <p>
-                    {{ trilha.descricao }}
-                </p>
+                <!-- CONTEÚDO -->
+
+                <div class="learning-card-content">
+
+                    <div class="learning-card-header">
+
+                        <h3>
+                            {{ trilha.titulo }}
+                        </h3>
 
 
-                <!-- =================================
-                     AULA DISPONÍVEL
-                ================================== -->
+                        {% if trilha.concluida %}
 
-                {% if trilha.status == "disponivel" %}
+                            <span class="learning-completed">
+                                ✓ Aula concluída
+                            </span>
+
+                        {% endif %}
+
+                    </div>
 
 
-                    {% if trilha.url %}
+                    <p>
+                        {{ trilha.descricao }}
+                    </p>
 
-                        <a
-                            href="{% url trilha.url %}"
-                            class="app-button"
-                        >
 
-                            {% if trilha.concluida %}
+                    <!-- AULA DISPONÍVEL -->
 
-                                Revisar aula
+                    {% if trilha.status == "disponivel" %}
 
-                            {% else %}
+                        {% if trilha.url %}
 
-                                Começar
+                            <a
+                                href="{% url trilha.url %}"
+                                class="app-button"
+                            >
 
-                            {% endif %}
+                                {% if trilha.concluida %}
+                                    Revisar aula
+                                {% else %}
+                                    Começar aula
+                                {% endif %}
 
-                        </a>
+                            </a>
+
+                        {% else %}
+
+                            <span class="learning-coming-soon">
+                                Aula em preparação
+                            </span>
+
+                        {% endif %}
+
+
+                    <!-- AULA BLOQUEADA -->
 
                     {% else %}
 
-                        <span class="learning-coming-soon">
-                            Aula em preparação
+                        <span class="learning-locked">
+                            🔒 Complete a etapa anterior
                         </span>
 
                     {% endif %}
 
+                </div>
 
-                <!-- =================================
-                     AULA BLOQUEADA
-                ================================== -->
+            </article>
 
-                {% else %}
-
-                    <span class="learning-locked">
-
-                        🔒 Complete a etapa anterior
-
-                    </span>
-
-                {% endif %}
-
-            </div>
-
-        </article>
 
         {% empty %}
 
-        <div class="learning-empty">
+            <div class="learning-empty">
 
-            <h3>
-                Nenhuma aula disponível.
-            </h3>
+                <h3>
+                    Nenhuma aula disponível.
+                </h3>
 
-            <p>
-                Novos conteúdos serão adicionados
-                à sua jornada financeira.
-            </p>
+                <p>
+                    Novos conteúdos serão adicionados
+                    à sua jornada financeira.
+                </p>
 
-        </div>
+            </div>
 
         {% endfor %}
 
     </div>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          MENSAGEM EDUCACIONAL
-    ========================================== -->
+         ===================================================== -->
 
     <div class="learning-message">
 
         <div class="learning-message-icon">
             ✦
         </div>
+
 
         <div>
 
@@ -286,7 +327,7 @@ Aprender | Invest.AI
 
             <p>
                 Antes de escolher produtos financeiros,
-                vamos ajudar você a entender orçamento,
+                é importante compreender orçamento,
                 crédito, dívidas, reserva e objetivos.
             </p>
 
@@ -295,9 +336,9 @@ Aprender | Invest.AI
     </div>
 
 
-    <!-- =========================================
-         PRINCÍPIO DA PLATAFORMA
-    ========================================== -->
+    <!-- =====================================================
+         PRINCÍPIO
+         ===================================================== -->
 
     <div class="learning-principle">
 
@@ -305,13 +346,17 @@ Aprender | Invest.AI
             APRENDER
         </span>
 
-        <strong>→</strong>
+        <strong>
+            →
+        </strong>
 
         <span>
             ORGANIZAR
         </span>
 
-        <strong>→</strong>
+        <strong>
+            →
+        </strong>
 
         <span>
             INVESTIR
