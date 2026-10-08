@@ -5,29 +5,24 @@ from accounts.views import dashboard
 
 
 urlpatterns = [
+    # Administração
     path("admin/", admin.site.urls),
 
-    path(
-        "conta/",
-        include("accounts.urls"),
-    ),
+    # Autenticação e cadastro
+    path("conta/", include("accounts.urls")),
 
-    path(
-        "",
-        include("core.urls"),
-    ),
-    
-    path(
-    "app/",
-    dashboard,
-    name="dashboard",
-),
-    path(
-    "perfil/",
-    include("perfil.urls"),
-),
+    # Página inicial
+    path("", include("core.urls")),
 
-path("aprender/", include("educacao.urls")),
+    # Dashboard
+    path("app/", dashboard, name="dashboard"),
 
+    # Perfil financeiro
+    path("perfil/", include("perfil.urls")),
 
+    # Educação financeira
+    path("aprender/", include("educacao.urls")),
+
+    # Carteira de investimentos
+    path("carteira/", include("carteira.urls")),
 ]

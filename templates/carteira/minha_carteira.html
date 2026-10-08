@@ -1,0 +1,114 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}Minha Carteira | Invest.AI{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-header">
+        <span class="dashboard-eyebrow">
+            MEUS INVESTIMENTOS
+        </span>
+
+        <h1>Minha Carteira</h1>
+
+        <p>
+            Organize seus investimentos e acompanhe
+            o valor total aplicado.
+        </p>
+    </div>
+
+    <article class="lesson-card">
+
+        <span class="dashboard-eyebrow">
+            TOTAL INVESTIDO
+        </span>
+
+        <h2>R$ {{ total_investido|floatformat:2 }}</h2>
+
+        <p>
+            Valor informado manualmente.
+            Não representa cotação atual de mercado.
+        </p>
+
+        <a
+            href="{% url 'carteira:cadastrar' %}"
+            class="app-button"
+        >
+            + Adicionar investimento
+        </a>
+        <a
+    href="{% url 'carteira:raio_x' %}"
+    class="app-button"
+>
+    Ver Raio-X da Carteira
+</a>
+
+    </article>
+
+    <article class="lesson-card">
+
+        <h2>Meus ativos</h2>
+
+        {% for investimento in investimentos %}
+
+            <div class="lesson-highlight">
+
+                <h3>{{ investimento.nome }}</h3>
+
+                <p>
+                    {{ investimento.get_categoria_display }}
+                </p>
+
+                <p>
+                    Quantidade: {{ investimento.quantidade }}
+                </p>
+
+                <p>
+                    Valor aplicado:
+                    R$ {{ investimento.valor_investido|floatformat:2 }}
+                </p>
+
+                <div class="carteira-actions">
+
+                    <a
+                        href="{% url 'carteira:editar' investimento.pk %}"
+                        class="app-button"
+                    >
+                        Editar
+                    </a>
+
+                    <form
+                        method="post"
+                        action="{% url 'carteira:excluir' investimento.pk %}"
+                        onsubmit="return confirm('Deseja realmente excluir este investimento?');"
+                    >
+                        {% csrf_token %}
+
+                        <button
+                            type="submit"
+                            class="app-button"
+                        >
+                            Excluir
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+                Você ainda não cadastrou investimentos.
+            </p>
+
+        {% endfor %}
+
+    </article>
+
+</section>
+
+{% endblock %}

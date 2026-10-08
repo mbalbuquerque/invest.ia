@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     "core",
     "perfil",
     "educacao.apps.EducacaoConfig",
+    "carteira",
 ]
 
 

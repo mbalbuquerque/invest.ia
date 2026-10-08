@@ -1,0 +1,66 @@
+{% extends "accounts/base_app.html" %}
+
+{% block title %}Novo Investimento | Invest.AI{% endblock %}
+
+{% block content %}
+
+<section class="lesson-page">
+
+    <div class="lesson-header">
+
+        <span class="dashboard-eyebrow">
+            MINHA CARTEIRA
+        </span>
+
+        <h1>Adicionar investimento</h1>
+
+        <p>
+            Registre um investimento para acompanhar
+            sua carteira no Invest.AI.
+        </p>
+
+    </div>
+
+    <div class="lesson-content">
+
+        <article class="lesson-card">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                {% for field in form %}
+
+                    <div class="form-group">
+
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                        {{ field.errors }}
+
+                    </div>
+
+                {% endfor %}
+
+                <button type="submit" class="app-button">
+                    Salvar investimento
+                </button>
+
+            </form>
+
+        </article>
+
+        <a href="{% url 'carteira:minha_carteira' %}">
+            ← Voltar para Minha Carteira
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

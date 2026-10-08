@@ -1,0 +1,185 @@
+
+{% extends "accounts/base_app.html" %}
+
+{% block title %}
+Raio-X da Carteira | Invest.AI
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-page">
+
+    <div class="dashboard-header">
+
+        <span class="dashboard-eyebrow">
+            ANÁLISE DA CARTEIRA
+        </span>
+
+        <h1>Raio-X da Carteira</h1>
+
+        <p>
+            Conheça a distribuição dos valores
+            aplicados e identifique concentrações.
+        </p>
+
+    </div>
+
+    <div class="learning-grid">
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                TOTAL APLICADO
+            </span>
+
+            <h2>
+                R$ {{ total_investido|floatformat:2 }}
+            </h2>
+
+        </article>
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                ATIVOS CADASTRADOS
+            </span>
+
+            <h2>{{ quantidade_ativos }}</h2>
+
+        </article>
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                CATEGORIAS
+            </span>
+
+            <h2>{{ quantidade_categorias }}</h2>
+
+        </article>
+
+    </div>
+
+    <article class="lesson-card">
+
+        <h2>Distribuição por categoria</h2>
+
+        {% for item in distribuicao %}
+
+            <div class="lesson-highlight">
+
+                <strong>
+                    {{ item.categoria }}
+                </strong>
+
+                <p>
+                    R$ {{ item.valor|floatformat:2 }}
+                </p>
+
+                <p>
+                    {{ item.percentual|floatformat:2 }}%
+                    do total aplicado
+                </p>
+
+                <div class="learning-progress">
+
+                    <div
+                        class="learning-progress-fill"
+                        style="width: {{ item.percentual|stringformat:'.2f' }}%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+                Cadastre investimentos para visualizar
+                a distribuição da carteira.
+            </p>
+
+        {% endfor %}
+
+    </article>
+
+    {% if maior_categoria %}
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                MAIOR CONCENTRAÇÃO POR CATEGORIA
+            </span>
+
+            <h2>
+                {{ maior_categoria.categoria }}
+            </h2>
+
+            <p>
+                Representa
+                {{ maior_categoria.percentual|floatformat:2 }}%
+                do valor aplicado.
+            </p>
+
+        </article>
+
+    {% endif %}
+
+    {% if maior_ativo %}
+
+        <article class="lesson-card">
+
+            <span class="dashboard-eyebrow">
+                MAIOR POSIÇÃO INDIVIDUAL
+            </span>
+
+            <h2>{{ maior_ativo.nome }}</h2>
+
+            <p>
+                {{ percentual_maior_ativo|floatformat:2 }}%
+                do total aplicado.
+            </p>
+
+        </article>
+
+    {% endif %}
+
+    <article class="lesson-card">
+
+        <span class="dashboard-eyebrow">
+            DICA INVEST.AI
+        </span>
+
+        <h2>Entenda sua concentração</h2>
+
+        <p>
+            Uma carteira concentrada pode estar mais
+            exposta aos riscos de uma categoria
+            ou de um investimento específico.
+        </p>
+
+        <p>
+            Entretanto, ter mais categorias não
+            significa necessariamente ter menos risco.
+            É importante analisar as características
+            dos ativos, seus objetivos e prazos.
+        </p>
+
+        <div class="lesson-highlight">
+            Esta análise utiliza os valores informados
+            pelo usuário, sem atualização por cotações
+            de mercado ou avaliação de rentabilidade.
+        </div>
+
+    </article>
+
+    <a
+        href="{% url 'carteira:minha_carteira' %}"
+        class="app-button"
+    >
+        ← Voltar para Minha Carteira
+    </a>
+
+</section>
+
+{% endblock %}
