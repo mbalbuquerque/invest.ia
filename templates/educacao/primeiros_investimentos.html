@@ -291,12 +291,7 @@ Primeiros investimentos | Invest.AI
 
                 <label class="quiz-option">
 
-                    <input
-                        type="radio"
-                        name="resposta"
-                        value="A"
-                        required
-                    >
+                    <input type="radio" name="resposta" value="A" required>
 
                     Apenas qual investimento rendeu mais no passado.
 
@@ -305,12 +300,7 @@ Primeiros investimentos | Invest.AI
 
                 <label class="quiz-option">
 
-                    <input
-                        type="radio"
-                        name="resposta"
-                        value="B"
-                        required
-                    >
+                    <input type="radio" name="resposta" value="B" required>
 
                     Apenas a opinião de outras pessoas.
 
@@ -319,12 +309,7 @@ Primeiros investimentos | Invest.AI
 
                 <label class="quiz-option">
 
-                    <input
-                        type="radio"
-                        name="resposta"
-                        value="C"
-                        required
-                    >
+                    <input type="radio" name="resposta" value="C" required>
 
                     Objetivo, prazo, liquidez, risco, custos
                     e características do investimento.
@@ -332,10 +317,7 @@ Primeiros investimentos | Invest.AI
                 </label>
 
 
-                <button
-                    type="submit"
-                    class="app-button"
-                >
+                <button type="submit" class="app-button">
                     Concluir trilha
                 </button>
 
@@ -344,61 +326,61 @@ Primeiros investimentos | Invest.AI
 
             {% if resultado == "correta" %}
 
-                <div class="quiz-feedback quiz-feedback-success">
+            <div class="quiz-feedback quiz-feedback-success">
 
-                    <div class="quiz-feedback-icon">
-                        ✓
-                    </div>
+                <div class="quiz-feedback-icon">
+                    ✓
+                </div>
 
-                    <div class="quiz-feedback-content">
+                <div class="quiz-feedback-content">
 
-                        <strong>
-                            Parabéns! Você concluiu a trilha Fundamentos.
-                        </strong>
+                    <strong>
+                        Parabéns! Você concluiu a trilha Fundamentos.
+                    </strong>
 
-                        <p>
-                            Você passou pelos principais conceitos
-                            necessários para começar uma jornada
-                            financeira mais consciente.
-                        </p>
+                    <p>
+                        Você passou pelos principais conceitos
+                        necessários para começar uma jornada
+                        financeira mais consciente.
+                    </p>
 
-                        <span class="quiz-feedback-tip">
-                            7 etapas concluídas · Progresso 100%
-                        </span>
-
-                    </div>
+                    <span class="quiz-feedback-tip">
+                        7 etapas concluídas · Progresso 100%
+                    </span>
 
                 </div>
+
+            </div>
 
 
             {% elif resultado == "incorreta" %}
 
-                <div class="quiz-feedback quiz-feedback-error">
+            <div class="quiz-feedback quiz-feedback-error">
 
-                    <div class="quiz-feedback-icon">
-                        ✕
-                    </div>
+                <div class="quiz-feedback-icon">
+                    ✕
+                </div>
 
-                    <div class="quiz-feedback-content">
+                <div class="quiz-feedback-content">
 
-                        <strong>
-                            Ainda não. Rentabilidade não conta
-                            toda a história.
-                        </strong>
+                    <strong>
+                        Ainda não. Rentabilidade não conta
+                        toda a história.
+                    </strong>
 
-                        <p>
-                            Uma decisão de investimento deve considerar
-                            objetivo, prazo, liquidez, riscos, custos
-                            e características da alternativa.
-                        </p>
+                    <p>
+                        Uma decisão de investimento deve considerar
+                        objetivo, prazo, liquidez, riscos, custos
+                        e características da alternativa.
+                    </p>
 
-                        <span class="quiz-try-again">
-                            Reveja as alternativas e tente novamente ↑
-                        </span>
-
-                    </div>
+                    <span class="quiz-try-again">
+                        Reveja as alternativas e tente novamente ↑
+                    </span>
 
                 </div>
+
+            </div>
 
             {% endif %}
 
@@ -409,92 +391,89 @@ Primeiros investimentos | Invest.AI
 
         {% if progresso %}
 
-            <div class="lesson-next">
+        <div class="lesson-next">
 
-                <div>
+            <div>
 
-                    <span class="dashboard-eyebrow">
-                        TRILHA CONCLUÍDA · 100%
-                    </span>
+                <span class="dashboard-eyebrow">
+                    TRILHA CONCLUÍDA · 100%
+                </span>
 
-                    <h3>
-                        Fundamentos financeiros ✓
-                    </h3>
+                <h3>
+                    Fundamentos financeiros ✓
+                </h3>
 
-                    <p>
-                        Você completou sua primeira jornada:
-                        Aprender → Organizar → Investir.
-                    </p>
-
-                </div>
-
-                <a
-                    href="{% url 'educacao:inicio' %}"
-                    class="app-button"
-                >
-                    Ver meu progresso →
-                </a>
+                <p>
+                    Você completou sua primeira jornada:
+                    Aprender → Organizar → Investir.
+                </p>
 
             </div>
 
+            <a href="{% url 'educacao:inicio' %}" class="app-button">
+                Ver meu progresso →
+            </a>
 
-            <article class="lesson-card">
+        </div>
 
-                <span class="dashboard-eyebrow">
-                    O QUE VOCÊ APRENDEU
-                </span>
 
-                <h2>Sua base financeira está construída</h2>
+        <article class="lesson-card">
 
-                <p>
-                    Nesta trilha você aprendeu sobre:
-                </p>
+            <span class="dashboard-eyebrow">
+                O QUE VOCÊ APRENDEU
+            </span>
 
-                <ul>
-                    <li>Dinheiro e escolhas;</li>
-                    <li>Orçamento;</li>
-                    <li>Consumo consciente;</li>
-                    <li>Crédito e juros;</li>
-                    <li>Dívidas;</li>
-                    <li>Reserva de emergência;</li>
-                    <li>Fundamentos dos investimentos.</li>
-                </ul>
+            <h2>Sua base financeira está construída</h2>
 
-                <div class="lesson-highlight">
-                    O próximo passo não é simplesmente investir mais.
-                    É conectar seus objetivos, seu perfil financeiro
-                    e sua carteira.
-                </div>
+            <p>
+                Nesta trilha você aprendeu sobre:
+            </p>
 
-            </article>
+            <ul>
+                <li>Dinheiro e escolhas;</li>
+                <li>Orçamento;</li>
+                <li>Consumo consciente;</li>
+                <li>Crédito e juros;</li>
+                <li>Dívidas;</li>
+                <li>Reserva de emergência;</li>
+                <li>Fundamentos dos investimentos.</li>
+            </ul>
+
+            <div class="lesson-highlight">
+                O próximo passo não é simplesmente investir mais.
+                É conectar seus objetivos, seu perfil financeiro
+                e sua carteira.
+            </div>
+
+        </article>
 
 
         {% else %}
 
-            <div class="lesson-next">
+        <div class="lesson-next">
 
-                <div>
+            <div>
 
-                    <span class="dashboard-eyebrow">
-                        ETAPA FINAL
-                    </span>
-
-                    <h3>
-                        Conclua o teste
-                    </h3>
-
-                    <p>
-                        Responda corretamente para finalizar
-                        sua primeira trilha financeira.
-                    </p>
-
-                </div>
-
-                <span class="learning-locked">
-                    🔒 Conclua o teste final
+                <span class="dashboard-eyebrow">
+                    ETAPA FINAL
                 </span>
 
+                <h3>
+                    Conclua o teste
+                </h3>
+
+                <p>
+                    Responda corretamente para finalizar
+                    sua primeira trilha financeira.
+                </p>
+
             </div>
+
+            <span class="learning-locked">
+                🔒 Conclua o teste final
+            </span>
+
+        </div>
 
         {% endif %}
 
