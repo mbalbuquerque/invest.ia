@@ -9,6 +9,10 @@ from .forms import InvestimentoForm
 from .models import Investimento
 
 
+# =====================================================
+# MINHA CARTEIRA
+# =====================================================
+
 @login_required
 def minha_carteira(request):
     investimentos = Investimento.objects.filter(
@@ -29,6 +33,10 @@ def minha_carteira(request):
         },
     )
 
+
+# =====================================================
+# RAIO-X DA CARTEIRA + PLOTLY
+# =====================================================
 
 @login_required
 def raio_x_carteira(request):
@@ -105,6 +113,39 @@ def raio_x_carteira(request):
             2,
         )
 
+    # =====================================================
+    # DADOS DOS GRÁFICOS INTERATIVOS
+    # =====================================================
+
+    distribuicao_grafico = [
+        {
+            "categoria": item["categoria"],
+            "valor": float(item["valor"]),
+            "percentual": float(item["percentual"]),
+        }
+        for item in distribuicao
+    ]
+
+    ativos_grafico = [
+        {
+            "id": investimento.pk,
+            "nome": investimento.nome,
+            "categoria": categorias.get(
+                investimento.categoria,
+                investimento.categoria,
+            ),
+            "valor": float(investimento.valor_investido),
+            "quantidade": str(investimento.quantidade),
+            "preco_medio": str(investimento.preco_medio),
+        }
+        for investimento in investimentos
+    ]
+
+    ativos_grafico.sort(
+        key=lambda item: item["valor"],
+        reverse=True,
+    )
+
     return render(
         request,
         "carteira/raio_x.html",
@@ -116,9 +157,15 @@ def raio_x_carteira(request):
             "maior_categoria": maior_categoria,
             "maior_ativo": maior_ativo,
             "percentual_maior_ativo": percentual_maior_ativo,
+            "distribuicao_grafico": distribuicao_grafico,
+            "ativos_grafico": ativos_grafico,
         },
     )
 
+
+# =====================================================
+# CADASTRAR INVESTIMENTO
+# =====================================================
 
 @login_required
 def cadastrar_investimento(request):
@@ -145,6 +192,10 @@ def cadastrar_investimento(request):
         },
     )
 
+
+# =====================================================
+# EDITAR INVESTIMENTO
+# =====================================================
 
 @login_required
 def editar_investimento(request, pk):
@@ -180,6 +231,10 @@ def editar_investimento(request, pk):
         },
     )
 
+
+# =====================================================
+# EXCLUIR INVESTIMENTO
+# =====================================================
 
 @login_required
 @require_POST

@@ -1,185 +1,83 @@
-
 {% extends "accounts/base_app.html" %}
-
-{% block title %}
-Raio-X da Carteira | Invest.AI
-{% endblock %}
-
+{% load static %}
+{% block title %}Raio-X Interativo | Invest.AI{% endblock %}
 {% block content %}
+<section class="rx-page">
+  <header class="rx-header">
+    <div><span class="rx-kicker">INVEST.AI / INTELIGÊNCIA FINANCEIRA</span><h1>Raio-X da Carteira</h1><p>Explore como seu capital registrado está distribuído. Selecione categorias e visualize concentrações.</p></div>
+    <a class="rx-link" href="{% url 'carteira:minha_carteira' %}">← Minha carteira</a>
+  </header>
 
-<section class="dashboard-page">
+  <div class="rx-stats">
+    <article class="rx-stat"><span>Capital registrado</span><strong>R$ {{ total_investido|floatformat:2 }}</strong><small>Valor aplicado informado</small></article>
+    <article class="rx-stat"><span>Posições cadastradas</span><strong>{{ quantidade_ativos }}</strong><small>Investimentos registrados</small></article>
+    <article class="rx-stat"><span>Categorias</span><strong>{{ quantidade_categorias }}</strong><small>Classes de ativos presentes</small></article>
+  </div>
 
-    <div class="dashboard-header">
+  <div class="rx-toolbar">
+    <label for="rx-category">Explorar categoria</label>
+    <select id="rx-category"><option value="">Todas as categorias</option></select>
+    <button type="button" id="rx-reset">Limpar filtros</button>
+  </div>
 
-        <span class="dashboard-eyebrow">
-            ANÁLISE DA CARTEIRA
-        </span>
+  <div class="rx-grid">
+    <article class="rx-panel"><div class="rx-panel-head"><div><span class="rx-kicker">ALOCAÇÃO</span><h2>Distribuição por categoria</h2></div></div><div id="rx-donut" class="rx-chart" role="img" aria-label="Gráfico interativo de distribuição por categoria"></div></article>
+    <article class="rx-panel"><div class="rx-panel-head"><div><span class="rx-kicker">COMPARAÇÃO</span><h2>Capital por categoria</h2></div></div><div id="rx-bars" class="rx-chart" role="img" aria-label="Gráfico de barras de valores por categoria"></div></article>
+    <article class="rx-panel rx-wide"><div class="rx-panel-head"><div><span class="rx-kicker">CONCENTRAÇÃO</span><h2>Mapa de posições</h2></div></div><div id="rx-treemap" class="rx-chart" role="img" aria-label="Mapa de concentração dos ativos"></div><p class="rx-hint">Clique em uma categoria nos gráficos acima para filtrar as posições.</p></article>
+  </div>
 
-        <h1>Raio-X da Carteira</h1>
+  <div class="rx-grid rx-bottom">
+    <article class="rx-panel"><span class="rx-kicker">MAIOR CONCENTRAÇÃO POR CATEGORIA</span>{% if maior_categoria %}<h2>{{ maior_categoria.categoria }}</h2><p>{{ maior_categoria.percentual|floatformat:2 }}% do capital registrado.</p>{% else %}<p>Nenhuma categoria cadastrada.</p>{% endif %}</article>
+    <article class="rx-panel"><span class="rx-kicker">MAIOR POSIÇÃO INDIVIDUAL</span>{% if maior_ativo %}<h2>{{ maior_ativo.nome }}</h2><p>{{ percentual_maior_ativo|floatformat:2 }}% do capital registrado.</p>{% else %}<p>Nenhum ativo cadastrado.</p>{% endif %}</article>
+  </div>
 
-        <p>
-            Conheça a distribuição dos valores
-            aplicados e identifique concentrações.
-        </p>
+  <article class="rx-panel rx-education"><span class="rx-kicker">EDUCAÇÃO FINANCEIRA</span><h2>O que estes gráficos mostram?</h2><p>Uma posição ou categoria muito grande pode indicar concentração. Diversificar categorias, por si só, não garante redução de riscos: considere características dos investimentos, objetivos e prazos.</p><p><strong>Importante:</strong> os gráficos representam valores aplicados informados pelo usuário. Não representam cotação atual, patrimônio de mercado, lucro ou rentabilidade.</p></article>
 
-    </div>
-
-    <div class="learning-grid">
-
-        <article class="lesson-card">
-
-            <span class="dashboard-eyebrow">
-                TOTAL APLICADO
-            </span>
-
-            <h2>
-                R$ {{ total_investido|floatformat:2 }}
-            </h2>
-
-        </article>
-
-        <article class="lesson-card">
-
-            <span class="dashboard-eyebrow">
-                ATIVOS CADASTRADOS
-            </span>
-
-            <h2>{{ quantidade_ativos }}</h2>
-
-        </article>
-
-        <article class="lesson-card">
-
-            <span class="dashboard-eyebrow">
-                CATEGORIAS
-            </span>
-
-            <h2>{{ quantidade_categorias }}</h2>
-
-        </article>
-
-    </div>
-
-    <article class="lesson-card">
-
-        <h2>Distribuição por categoria</h2>
-
-        {% for item in distribuicao %}
-
-            <div class="lesson-highlight">
-
-                <strong>
-                    {{ item.categoria }}
-                </strong>
-
-                <p>
-                    R$ {{ item.valor|floatformat:2 }}
-                </p>
-
-                <p>
-                    {{ item.percentual|floatformat:2 }}%
-                    do total aplicado
-                </p>
-
-                <div class="learning-progress">
-
-                    <div
-                        class="learning-progress-fill"
-                        style="width: {{ item.percentual|stringformat:'.2f' }}%;"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        {% empty %}
-
-            <p>
-                Cadastre investimentos para visualizar
-                a distribuição da carteira.
-            </p>
-
-        {% endfor %}
-
-    </article>
-
-    {% if maior_categoria %}
-
-        <article class="lesson-card">
-
-            <span class="dashboard-eyebrow">
-                MAIOR CONCENTRAÇÃO POR CATEGORIA
-            </span>
-
-            <h2>
-                {{ maior_categoria.categoria }}
-            </h2>
-
-            <p>
-                Representa
-                {{ maior_categoria.percentual|floatformat:2 }}%
-                do valor aplicado.
-            </p>
-
-        </article>
-
-    {% endif %}
-
-    {% if maior_ativo %}
-
-        <article class="lesson-card">
-
-            <span class="dashboard-eyebrow">
-                MAIOR POSIÇÃO INDIVIDUAL
-            </span>
-
-            <h2>{{ maior_ativo.nome }}</h2>
-
-            <p>
-                {{ percentual_maior_ativo|floatformat:2 }}%
-                do total aplicado.
-            </p>
-
-        </article>
-
-    {% endif %}
-
-    <article class="lesson-card">
-
-        <span class="dashboard-eyebrow">
-            DICA INVEST.AI
-        </span>
-
-        <h2>Entenda sua concentração</h2>
-
-        <p>
-            Uma carteira concentrada pode estar mais
-            exposta aos riscos de uma categoria
-            ou de um investimento específico.
-        </p>
-
-        <p>
-            Entretanto, ter mais categorias não
-            significa necessariamente ter menos risco.
-            É importante analisar as características
-            dos ativos, seus objetivos e prazos.
-        </p>
-
-        <div class="lesson-highlight">
-            Esta análise utiliza os valores informados
-            pelo usuário, sem atualização por cotações
-            de mercado ou avaliação de rentabilidade.
-        </div>
-
-    </article>
-
-    <a
-        href="{% url 'carteira:minha_carteira' %}"
-        class="app-button"
-    >
-        ← Voltar para Minha Carteira
-    </a>
-
+  {{ distribuicao_grafico|json_script:"rx-category-data" }}
+  {{ ativos_grafico|json_script:"rx-asset-data" }}
 </section>
-
+<style>
+.rx-page{--rx-navy:#0c2540;--rx-green:#059669;--rx-muted:#66788a;max-width:1200px;margin:0 auto;padding:clamp(18px,3vw,38px) 12px 55px;color:var(--rx-navy)}
+.rx-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:24px}.rx-header h1{font-size:clamp(1.8rem,3vw,2.6rem);margin:8px 0}.rx-header p{max-width:690px;color:var(--rx-muted);line-height:1.6}.rx-kicker{font-size:.7rem;font-weight:800;letter-spacing:.12em;color:var(--rx-green)}.rx-link{padding:11px 15px;border-radius:10px;background:var(--rx-navy);color:#fff;text-decoration:none;white-space:nowrap}
+.rx-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.rx-stat,.rx-panel{background:#fff;border:1px solid #e5edf3;border-radius:18px;box-shadow:0 8px 28px rgba(10,40,70,.05)}.rx-stat{padding:22px;display:flex;flex-direction:column;gap:10px}.rx-stat span{font-size:.84rem;color:var(--rx-muted)}.rx-stat strong{font-size:clamp(1.4rem,2.6vw,2rem);overflow-wrap:anywhere}.rx-stat small{color:var(--rx-muted)}
+.rx-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.rx-toolbar label{font-weight:700}.rx-toolbar select,.rx-toolbar button{border:1px solid #d6e1ea;border-radius:10px;padding:10px 12px;background:white;color:var(--rx-navy);font:inherit}.rx-toolbar button{cursor:pointer}.rx-toolbar button:hover{border-color:var(--rx-green)}
+.rx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.rx-panel{padding:22px;min-width:0}.rx-panel h2{font-size:1.15rem;margin:8px 0 10px}.rx-panel p{color:var(--rx-muted);line-height:1.6}.rx-wide{grid-column:1/-1}.rx-chart{width:100%;height:360px}.rx-wide .rx-chart{height:420px}.rx-hint{font-size:.83rem;margin-bottom:0}.rx-bottom{margin-top:17px}.rx-education{margin-top:17px}.rx-education p:last-child{margin-bottom:0}
+@media(max-width:760px){.rx-header{flex-direction:column}.rx-stats{grid-template-columns:1fr}.rx-grid{grid-template-columns:1fr}.rx-wide{grid-column:auto}.rx-chart{height:320px}.rx-wide .rx-chart{height:340px}.rx-panel{padding:16px}}
+</style>
+<script src="https://cdn.plot.ly/plotly-3.1.0.min.js" defer></script>
+<script defer>
+(function(){
+  function init(){
+    const catNode=document.getElementById('rx-category-data');
+    const assetNode=document.getElementById('rx-asset-data');
+    if(!catNode||!assetNode||typeof Plotly==='undefined')return;
+    const categories=JSON.parse(catNode.textContent||'[]');
+    const assets=JSON.parse(assetNode.textContent||'[]');
+    const selector=document.getElementById('rx-category');
+    const currency=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+    const palette=['#059669','#2563eb','#f59e0b','#8b5cf6','#0e7490','#ef4444','#64748b'];
+    const categoryNames=categories.map(x=>x.categoria);
+    categoryNames.forEach(name=>{const o=document.createElement('option');o.value=name;o.textContent=name;selector.appendChild(o)});
+    const config={responsive:true,displaylogo:false,modeBarButtonsToRemove:['lasso2d','select2d']};
+    const base={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{family:'system-ui, sans-serif',color:'#0c2540'},margin:{t:20,b:35,l:25,r:25}};
+    function render(){
+      const selected=selector.value;
+      const shown=selected?categories.filter(x=>x.categoria===selected):categories;
+      const positions=selected?assets.filter(x=>x.categoria===selected):assets;
+      const labels=shown.map(x=>x.categoria), values=shown.map(x=>Number(x.valor));
+      if(!shown.length){['rx-donut','rx-bars','rx-treemap'].forEach(id=>document.getElementById(id).textContent='Cadastre investimentos para visualizar o gráfico.');return}
+      Plotly.react('rx-donut',[{type:'pie',hole:.65,labels,values,marker:{colors:shown.map(x=>palette[categoryNames.indexOf(x.categoria)%palette.length])},textinfo:'label+percent',hovertemplate:'%{label}<br>%{value:,.2f} aplicados<br>%{percent}<extra></extra>'}],{...base,showlegend:false,margin:{t:20,b:20,l:10,r:10}},config);
+      Plotly.react('rx-bars',[{type:'bar',orientation:'h',x:values,y:labels,marker:{color:shown.map(x=>palette[categoryNames.indexOf(x.categoria)%palette.length])},hovertemplate:'%{y}<br>R$ %{x:,.2f}<extra></extra>'}],{...base,xaxis:{title:'Valor aplicado (R$)',automargin:true},yaxis:{automargin:true,autorange:'reversed'}},config);
+      if(positions.length){Plotly.react('rx-treemap',[{type:'treemap',labels:positions.map(x=>x.nome),parents:positions.map(()=>''),values:positions.map(x=>Number(x.valor)),textinfo:'label+percent root',hovertemplate:'%{label}<br>R$ %{value:,.2f}<extra></extra>',marker:{colors:positions.map(x=>palette[Math.max(0,categoryNames.indexOf(x.categoria))%palette.length])}}],{...base,margin:{t:5,b:5,l:5,r:5}},config)}
+      else{Plotly.purge('rx-treemap');document.getElementById('rx-treemap').textContent='Nenhuma posição disponível para esta seleção.'}
+    }
+    selector.addEventListener('change',render);
+    document.getElementById('rx-reset').addEventListener('click',()=>{selector.value='';render()});
+    render();
+    document.getElementById('rx-donut').on('plotly_click',event=>{const label=event.points?.[0]?.label;if(label&&categoryNames.includes(label)){selector.value=selector.value===label?'':label;render()}});
+    document.getElementById('rx-bars').on('plotly_click',event=>{const label=event.points?.[0]?.y;if(label&&categoryNames.includes(label)){selector.value=selector.value===label?'':label;render()}});
+  }
+  window.addEventListener('load',init);
+})();
+</script>
 {% endblock %}
